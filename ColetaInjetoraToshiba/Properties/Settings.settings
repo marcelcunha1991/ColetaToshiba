@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ColetaInjetoraToshiba.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ColetaInjetoraHaitian_localhost_idwws" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/idw/idwws</Value>
+    </Setting>
+    <Setting Name="ColetaInjetoraHaitian_msws_msws" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/idw/msws</Value>
+    </Setting>
+    <Setting Name="CdPt" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">550/01</Value>
+    </Setting>
+    <Setting Name="HostOpc" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">teste</Value>
+    </Setting>
+    <Setting Name="Maquinas" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;550/01&lt;/string&gt;
+  &lt;string&gt;120001&lt;/string&gt;
+  &lt;string&gt;100002&lt;/string&gt;
+  &lt;string&gt;130001&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="HostInjetora" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="EquipamentoAuxiliar" Type="System.String" Scope="User">
+      <Value Profile="(Default)">550/01</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

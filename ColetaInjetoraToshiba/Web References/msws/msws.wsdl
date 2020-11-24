@@ -1,0 +1,2506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ms/msws" name="msws" targetNamespace="http://ms/msws" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://localhost:8080/idw/msws?xsd=1" namespace="http://ms/msws" />
+    </xsd:schema>
+  </types>
+  <message name="setTr_CicloFim">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="tns:iwsDadosApontamentoDTO" />
+  </message>
+  <message name="setTr_CicloFimResponse">
+    <part name="return" type="tns:iwsReleDTO" />
+  </message>
+  <message name="FalhaSnapshot">
+    <part name="fault" element="tns:FalhaSnapshotException" />
+  </message>
+  <message name="setDadosColetados">
+    <part name="arg0" type="tns:iwsDadosColetadosDTO" />
+  </message>
+  <message name="setDadosColetadosResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_integracaoMws">
+    <part name="arg0" type="xsd:decimal" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="setTr_integracaoMwsResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="setListaDadosColetados">
+    <part name="arg0" type="tns:iwsListaDadosColetadosDTO" />
+  </message>
+  <message name="setListaDadosColetadosResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_integracaoMws">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_integracaoMwsResponse">
+    <part name="return" type="tns:iwsListaMatPrimaDTO" />
+  </message>
+  <message name="getMaiorParadaColetaComAndon">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="getMaiorParadaColetaComAndonResponse">
+    <part name="return" type="tns:paradaColetaComAndonDTO" />
+  </message>
+  <message name="getGraficoOEEHoraHora">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="getGraficoOEEHoraHoraResponse">
+    <part name="return" type="tns:indicadoresColetaGraficoInjetDTO" />
+  </message>
+  <message name="getInfoUltimoRefugo">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getInfoUltimoRefugoResponse">
+    <part name="return" type="tns:iwsRefugoDTO" />
+  </message>
+  <message name="setRegistroBarCode">
+    <part name="arg0" type="tns:iwsRegistroBarCodeDTO" />
+  </message>
+  <message name="setRegistroBarCodeResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_LancaEventoRefugo">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+    <part name="arg5" type="xsd:string" />
+    <part name="arg6" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_LancaEventoRefugoResponse">
+    <part name="return" type="tns:iwsRefugoDTO" />
+  </message>
+  <message name="setTr_CicloInicio">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="tns:iwsDadosApontamentoDTO" />
+  </message>
+  <message name="setTr_CicloInicioResponse">
+    <part name="return" type="tns:iwsCicloDTO" />
+  </message>
+  <message name="getTr_InspecaoManual">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="getTr_InspecaoManualResponse">
+    <part name="return" type="tns:iwsInspecaoManualDTO" />
+  </message>
+  <message name="setTr_InsereAnotacaoParada">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_InsereAnotacaoParadaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_InspecaoManual">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+  </message>
+  <message name="setTr_InspecaoManualResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_ApagaUltimoRefugo">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+    <part name="arg5" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_ApagaUltimoRefugoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_ApontamentoAramado">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontamentoAramadoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_ValidaCodRefugo">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="getTr_ValidaCodRefugoResponse">
+    <part name="return" type="tns:iwsRefugoDTO" />
+  </message>
+  <message name="verificaSeJaEfetouPesagem">
+    <part name="idUP" type="xsd:string" />
+  </message>
+  <message name="verificaSeJaEfetouPesagemResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="getDadosFitesa">
+    <part name="ip" type="xsd:string" />
+  </message>
+  <message name="getDadosFitesaResponse">
+    <part name="return" type="tns:iwsFitesaDTO" />
+  </message>
+  <message name="GetNomeOperador">
+    <part name="cdusuario" type="xsd:string" />
+    <part name="idUP" type="xsd:string" />
+  </message>
+  <message name="GetNomeOperadorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getTr_ExisteOperacao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="getTr_ExisteOperacaoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_OPsEmAbertoMaquina">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_OPsEmAbertoMaquinaResponse">
+    <part name="return" type="tns:iwsColetaDiscretaListaOPsDTO" />
+  </message>
+  <message name="getTr_SincronizaIHMBalanca">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_SincronizaIHMBalancaResponse">
+    <part name="return" type="tns:iwsDadosIHMBalancaDTO" />
+  </message>
+  <message name="lancaPerdaResinaAmericaTampas">
+    <part name="idUP" type="xsd:string" />
+    <part name="valor" type="xsd:decimal" />
+    <part name="dthr" type="xsd:dateTime" />
+  </message>
+  <message name="lancaPerdaResinaAmericaTampasResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="getTr_LoginsAbertosUP">
+    <part name="idUp" type="xsd:string" />
+  </message>
+  <message name="getTr_LoginsAbertosUPResponse">
+    <part name="return" type="tns:iwsColetaDiscretaListaLoginsDTO" />
+  </message>
+  <message name="getTr_OPQtdUltApont">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_OPQtdUltApontResponse">
+    <part name="return" type="xsd:double" />
+  </message>
+  <message name="lancaPesagemAmericaTampas">
+    <part name="idUP" type="xsd:string" />
+    <part name="valor" type="xsd:decimal" />
+    <part name="dthr" type="xsd:dateTime" />
+  </message>
+  <message name="lancaPesagemAmericaTampasResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="setTr_FechaOPColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:dateTime" />
+    <part name="arg4" type="xsd:string" />
+    <part name="arg5" type="xsd:string" />
+    <part name="arg6" type="xsd:string" />
+    <part name="arg7" type="xsd:string" />
+  </message>
+  <message name="setTr_FechaOPColetaDiscretaResponse" />
+  <message name="getTr_RecuperaOperacao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="getTr_RecuperaOperacaoResponse">
+    <part name="return" type="tns:iwsColetaDiscretaOperacaoDTO" />
+  </message>
+  <message name="getTr_TabParadaSetaAnotacao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="tns:iwsParadaDTO" />
+  </message>
+  <message name="getTr_TabParadaSetaAnotacaoResponse">
+    <part name="return" type="tns:iwsParadaDTO" />
+  </message>
+  <message name="lancaIncProdPlan">
+    <part name="idUP" type="xsd:string" />
+    <part name="quantidade" type="xsd:int" />
+    <part name="dthrevt" type="xsd:dateTime" />
+  </message>
+  <message name="lancaIncProdPlanResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="mudancaCavidadesAtivasNomolde">
+    <part name="idUP" type="xsd:string" />
+    <part name="valor" type="xsd:int" />
+    <part name="dthr" type="xsd:dateTime" />
+  </message>
+  <message name="mudancaCavidadesAtivasNomoldeResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="setTr_ApontaConsumoCCK">
+    <part name="idUp" type="xsd:string" />
+    <part name="dthr" type="xsd:dateTime" />
+    <part name="dadosCCKDTO" type="tns:iwsDadosCCKDTO" />
+  </message>
+  <message name="setTr_ApontaConsumoCCKResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="getTr_OpCarregadaEmMaquina">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="getTr_OpCarregadaEmMaquinaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_LoginAbertoMaquina">
+    <part name="idUp" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="getTr_LoginAbertoMaquinaResponse">
+    <part name="return" type="tns:iwsColetaDiscretaLoginDTO" />
+  </message>
+  <message name="getIdEmpresaInjet" />
+  <message name="getIdEmpresaInjetResponse">
+    <part name="return" type="xsd:int" />
+  </message>
+  <message name="getTr_ParadaEmAbertoMaquina">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="getTr_ParadaEmAbertoMaquinaResponse">
+    <part name="return" type="tns:iwsColetaDiscretaParadaEmAbertoDTO" />
+  </message>
+  <message name="setValidaPesagem">
+    <part name="idUp" type="xsd:string" />
+    <part name="dadosDTO" type="tns:iwsRegistroBarCodeDTO" />
+    <part name="peso" type="xsd:string" />
+  </message>
+  <message name="setValidaPesagemResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="pesquisarMsMsPorURLConexaoComParametro">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="pesquisarMsMsPorURLConexaoComParametroResponse">
+    <part name="return" type="tns:msMs" />
+  </message>
+  <message name="validaErro">
+    <part name="arg0" type="tns:eventoColetado" />
+  </message>
+  <message name="validaErroResponse" />
+  <message name="registraIhmNoMs">
+    <part name="arg0" type="tns:ihmDTO" />
+    <part name="arg1" type="tns:msDTO" />
+  </message>
+  <message name="registraIhmNoMsResponse">
+    <part name="return" type="tns:msDTO" />
+  </message>
+  <message name="getTr_Autorizacao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:int" />
+    <part name="arg4" type="xsd:dateTime" />
+    <part name="arg5" type="xsd:boolean" />
+  </message>
+  <message name="getTr_AutorizacaoResponse">
+    <part name="return" type="tns:iwsAutenticacaoDTO" />
+  </message>
+  <message name="pesquisarMsIcPorUrlConexao">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="pesquisarMsIcPorUrlConexaoResponse">
+    <part name="return" type="tns:icDTO" />
+  </message>
+  <message name="getListaMsicup" />
+  <message name="getListaMsicupResponse">
+    <part name="return" type="tns:msicupsDTO" />
+  </message>
+  <message name="getUpsIHM">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="getUpsIHMResponse">
+    <part name="return" type="tns:iwsHorarioDTO" />
+  </message>
+  <message name="isOperador">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="isOperadorResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="setTr_removeInspecoesInvalidas">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="setTr_removeInspecoesInvalidasResponse" />
+  <message name="setTr_LancaEventoRefugoDefeito">
+    <part name="arg0" type="tns:iwsRefugoComDefeitosDTO" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_LancaEventoRefugoDefeitoResponse">
+    <part name="return" type="tns:iwsRefugoDTO" />
+  </message>
+  <message name="getTr_ValidacaoNovaOPColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+  </message>
+  <message name="getTr_ValidacaoNovaOPColetaDiscretaResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getTr_UPsComParadaEmAbertoOperacaoInformada">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="getTr_UPsComParadaEmAbertoOperacaoInformadaResponse">
+    <part name="return" type="tns:iwsColetaDiscretaListaParadaEmAbertoDTO" />
+  </message>
+  <message name="getTr_verificaSePedeComplemento">
+    <part name="idUP" type="xsd:string" />
+    <part name="nrop" type="xsd:string" />
+  </message>
+  <message name="getTr_verificaSePedeComplementoResponse">
+    <part name="return" type="tns:iwsComplementaOP" />
+  </message>
+  <message name="setTr_ApontaAbertParadaColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaAbertParadaColetaDiscretaResponse" />
+  <message name="getMaioresParadasColetaComAndon">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="getMaioresParadasColetaComAndonResponse">
+    <part name="return" type="tns:paradasColetaComAndonDTO" />
+  </message>
+  <message name="setTr_ApontaAbertLoginColetaDiscreta">
+    <part name="idUp" type="xsd:string" />
+    <part name="dthrEvento" type="xsd:dateTime" />
+    <part name="cdOperacao" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaAbertLoginColetaDiscretaResponse" />
+  <message name="setTr_FechaLoginColetaDiscreta">
+    <part name="idUp" type="xsd:string" />
+    <part name="dthrEvento" type="xsd:dateTime" />
+    <part name="dtHrLogin" type="xsd:dateTime" />
+    <part name="cdOperacao" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+    <part name="idLoginEmAberto" type="xsd:string" />
+  </message>
+  <message name="setTr_FechaLoginColetaDiscretaResponse" />
+  <message name="setTr_ExisteLoginAbertoMaquina">
+    <part name="idUp" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="setTr_ExisteLoginAbertoMaquinaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_UPsSemLoginOperadorInformado">
+    <part name="mac" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="getTr_UPsSemLoginOperadorInformadoResponse">
+    <part name="return" type="tns:iwsColetaDiscretaListaUPsDTO" />
+  </message>
+  <message name="getTr_ExisteParadaEmAbertoMaquina">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_ExisteParadaEmAbertoMaquinaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_ApontaFechamParadaColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:dateTime" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+    <part name="arg5" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaFechamParadaColetaDiscretaResponse" />
+  <message name="setTr_ApontaProducaoColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaProducaoColetaDiscretaResponse" />
+  <message name="obtemListaDeVariaveisParaAferir">
+    <part name="idUp" type="xsd:string" />
+  </message>
+  <message name="obtemListaDeVariaveisParaAferirResponse">
+    <part name="return" type="tns:iwsListaInspecoesAutoDTO" />
+  </message>
+  <message name="getTr_UPsComLoginAbertoOperadorInformado">
+    <part name="mac" type="xsd:string" />
+    <part name="cdOperacao" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="getTr_UPsComLoginAbertoOperadorInformadoResponse">
+    <part name="return" type="tns:iwsColetaDiscretaListaLoginsDTO" />
+  </message>
+  <message name="getTr_ApontaRefugoColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+  </message>
+  <message name="getTr_ApontaRefugoColetaDiscretaResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="finalParada">
+    <part name="arg0" type="tns:eventoColetado" />
+  </message>
+  <message name="finalParadaResponse" />
+  <message name="setUPBeatMac">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="setUPBeatMacResponse">
+    <part name="return" type="tns:iwsHorarioDTO" />
+  </message>
+  <message name="setUPBeat">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:boolean" />
+    <part name="arg3" type="xsd:boolean" />
+  </message>
+  <message name="setUPBeatResponse">
+    <part name="return" type="tns:iwsHorarioDTO" />
+  </message>
+  <message name="setTr_Consula">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_ConsulaResponse">
+    <part name="return" type="tns:iwsConsultaDTO" />
+  </message>
+  <message name="setTr_ApontaFechamentoLoginColetaDiscretaTodasUPs">
+    <part name="mac" type="xsd:string" />
+    <part name="dthrEvento" type="xsd:dateTime" />
+    <part name="cdOperacao" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaFechamentoLoginColetaDiscretaTodasUPsResponse" />
+  <message name="setTr_ApontaFechamentoParadaColetaDiscretaTodasUPs">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaFechamentoParadaColetaDiscretaTodasUPsResponse" />
+  <message name="setTr_ApontaAberturaParadaColetaDiscretaTodasUPs">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaAberturaParadaColetaDiscretaTodasUPsResponse" />
+  <message name="setTr_ApontaAberturaLoginColetaDiscretaTodasUPs">
+    <part name="mac" type="xsd:string" />
+    <part name="dthrEvento" type="xsd:dateTime" />
+    <part name="cdOperacao" type="xsd:string" />
+    <part name="cdOperador" type="xsd:string" />
+  </message>
+  <message name="setTr_ApontaAberturaLoginColetaDiscretaTodasUPsResponse" />
+  <message name="getTr_DncTransferencia">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_DncTransferenciaResponse">
+    <part name="return" type="tns:iwsUpDncDTO" />
+  </message>
+  <message name="getTr_sincronizaHorario" />
+  <message name="getTr_sincronizaHorarioResponse">
+    <part name="return" type="tns:iwsHorarioDTO" />
+  </message>
+  <message name="getTr_inicializacao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:boolean" />
+    <part name="arg2" type="xsd:boolean" />
+    <part name="arg3" type="xsd:dateTime" />
+  </message>
+  <message name="getTr_inicializacaoResponse">
+    <part name="return" type="tns:iwsListaUpDTO" />
+  </message>
+  <message name="getTr_alertasAbertos">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_alertasAbertosResponse">
+    <part name="return" type="tns:iwsListaAlertaDTO" />
+  </message>
+  <message name="setTr_alertaFim">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_alertaFimResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_alertaInicio">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_alertaInicioResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="removeRegistraIhmNoMs">
+    <part name="arg0" type="tns:ihmDTO" />
+    <part name="arg1" type="tns:msDTO" />
+  </message>
+  <message name="removeRegistraIhmNoMsResponse">
+    <part name="return" type="tns:msDTO" />
+  </message>
+  <message name="getTr_TabAlertaSetaCod">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_TabAlertaSetaCodResponse">
+    <part name="return" type="tns:iwsAlertaDTO" />
+  </message>
+  <message name="getPesoProduto">
+    <part name="idUP" type="xsd:string" />
+    <part name="Cdprod" type="xsd:string" />
+  </message>
+  <message name="getPesoProdutoResponse">
+    <part name="return" type="tns:iwsPesoProdutoDTO" />
+  </message>
+  <message name="setCepOPC">
+    <part name="arg0" type="xsd:int" />
+    <part name="arg1" type="xsd:double" />
+    <part name="arg2" type="xsd:double" />
+    <part name="arg3" type="tns:icUpDTO" />
+    <part name="arg4" type="tns:icDTO" />
+    <part name="arg5" type="xsd:string" />
+  </message>
+  <message name="setCepOPCResponse" />
+  <message name="getTr_validaAcao">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_validaAcaoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_operadoresLogados">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_operadoresLogadosResponse">
+    <part name="return" type="tns:iwsListModDTO" />
+  </message>
+  <message name="getTr_stProdutoUsuario">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_stProdutoUsuarioResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_operadorInicio">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_operadorInicioResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="getTr_validaCausa">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_validaCausaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_validaJustificativa">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_validaJustificativaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_validaLocalParada">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_validaLocalParadaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="validaMotivoVariacaoRitmo">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="validaMotivoVariacaoRitmoResponse">
+    <part name="return" type="tns:iwsVariacaoRitmoValidaDTO" />
+  </message>
+  <message name="setTr_operadorFim">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+    <part name="arg3" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_operadorFimResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="getTr_TabParadaSetaCod">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+  </message>
+  <message name="getTr_TabParadaSetaCodResponse">
+    <part name="return" type="tns:iwsParadaDTO" />
+  </message>
+  <message name="setTr_lancaEvento46">
+    <part name="arg0" type="tns:iwsVariacaoRitmoDTO" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_lancaEvento46Response">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_paradaFim">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_paradaFimResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_paradaInicio">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:boolean" />
+    <part name="arg3" type="xsd:boolean" />
+    <part name="arg4" type="xsd:boolean" />
+  </message>
+  <message name="setTr_paradaInicioResponse">
+    <part name="return" type="tns:iwsCicloDTO" />
+  </message>
+  <message name="setTr_paradaMotivo">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+    <part name="arg5" type="xsd:string" />
+    <part name="arg6" type="xsd:string" />
+    <part name="arg7" type="xsd:string" />
+    <part name="arg8" type="xsd:string" />
+    <part name="arg9" type="xsd:string" />
+    <part name="arg10" type="xsd:boolean" />
+    <part name="arg11" type="xsd:string" />
+    <part name="arg12" type="xsd:int" />
+  </message>
+  <message name="setTr_paradaMotivoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="heartbeat">
+    <part name="arg0" type="tns:msDTO" />
+  </message>
+  <message name="heartbeatResponse">
+    <part name="return" type="tns:msDTO" />
+  </message>
+  <message name="setTr_MCSemConexao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_MCSemConexaoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="getTr_IdupMACColetaDiscreta">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_IdupMACColetaDiscretaResponse">
+    <part name="return" type="tns:iwsListaUpDTO" />
+  </message>
+  <message name="getTr_planejamento">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="tns:iwsCpDTO" />
+    <part name="arg2" type="xsd:dateTime" />
+  </message>
+  <message name="getTr_planejamentoResponse">
+    <part name="return" type="tns:iwsCpDTO" />
+  </message>
+  <message name="setTr_fimplanejamentoParcial">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:int" />
+    <part name="arg3" type="xsd:boolean" />
+  </message>
+  <message name="setTr_fimplanejamentoParcialResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_getRele8">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="setTr_getRele8Response">
+    <part name="return" type="tns:iwsReleDTO" />
+  </message>
+  <message name="setTr_getPrUpAndonPrcsft">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="setTr_getPrUpAndonPrcsftResponse">
+    <part name="return" type="tns:iwsUpAndonPrcsftDTO" />
+  </message>
+  <message name="getTr_AutorizacaoLogout">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:dateTime" />
+    <part name="arg4" type="xsd:boolean" />
+  </message>
+  <message name="getTr_AutorizacaoLogoutResponse">
+    <part name="return" type="tns:iwsAutenticacaoDTO" />
+  </message>
+  <message name="inicializacaoSemEvento">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="inicializacaoSemEventoResponse">
+    <part name="return" type="tns:iwsListaUpDTO" />
+  </message>
+  <message name="getTr_ValidaLoginSenha">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:string" />
+    <part name="arg2" type="xsd:int" />
+  </message>
+  <message name="getTr_ValidaLoginSenhaResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_trataInicioDeCIP">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="setTr_trataInicioDeCIPResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_fimplanejamento">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:int" />
+  </message>
+  <message name="setTr_fimplanejamentoResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_trataFimCIP">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="setTr_trataFimCIPResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_alteraStatusApntSap">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="setTr_alteraStatusApntSapResponse" />
+  <message name="getTr_VerificaExecInspecao">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_VerificaExecInspecaoResponse">
+    <part name="return" type="tns:iwsInspecaoManualDTO" />
+  </message>
+  <message name="setTr_confirmacaoOp">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="tns:iwsCpDTO" />
+  </message>
+  <message name="setTr_confirmacaoOpResponse">
+    <part name="return" type="tns:iwsCpDTO" />
+  </message>
+  <message name="setTr_registroIntegracaoDoal">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:boolean" />
+  </message>
+  <message name="setTr_registroIntegracaoDoalResponse" />
+  <message name="getTr_statusPrUpAndon">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:boolean" />
+  </message>
+  <message name="getTr_statusPrUpAndonResponse">
+    <part name="return" type="xsd:boolean" />
+  </message>
+  <message name="setTr_buscaAlertaProbQuali">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="setTr_buscaAlertaProbQualiResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="setTr_LancaEventoInspecao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_LancaEventoInspecaoResponse">
+    <part name="return" type="tns:iwsInspecaoManualDTO" />
+  </message>
+  <message name="setTr_LancaAberturaInspecao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+  </message>
+  <message name="setTr_LancaAberturaInspecaoResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="getTr_ParametrosInspecao">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_ParametrosInspecaoResponse">
+    <part name="return" type="tns:iwsInspecaoManualDTO" />
+  </message>
+  <message name="setTr_encerraAlertaProbQuali">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+  </message>
+  <message name="setTr_encerraAlertaProbQualiResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <message name="setTr_alteraCartoesKanban">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:boolean" />
+  </message>
+  <message name="setTr_alteraCartoesKanbanResponse">
+    <part name="return" type="xsd:string" />
+  </message>
+  <message name="getTr_dadosIntegracaoDoal">
+    <part name="arg0" type="xsd:string" />
+  </message>
+  <message name="getTr_dadosIntegracaoDoalResponse">
+    <part name="return" type="tns:iwsListaMatPrimaDTO" />
+  </message>
+  <message name="setTr_lancaApntMateriaPrima">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="xsd:string" />
+    <part name="arg3" type="xsd:string" />
+    <part name="arg4" type="xsd:string" />
+    <part name="arg5" type="xsd:string" />
+    <part name="arg6" type="xsd:double" />
+    <part name="arg7" type="xsd:int" />
+    <part name="arg8" type="tns:iwsCpDTO" />
+  </message>
+  <message name="setTr_lancaApntMateriaPrimaResponse">
+    <part name="return" type="tns:iwsProdMateriaPrimaDTO" />
+  </message>
+  <message name="setTr_fimInspecao">
+    <part name="arg0" type="xsd:string" />
+    <part name="arg1" type="xsd:dateTime" />
+    <part name="arg2" type="tns:iwsDadosInspDTO" />
+  </message>
+  <message name="setTr_fimInspecaoResponse">
+    <part name="return" type="tns:iwsErroDTO" />
+  </message>
+  <portType name="msws">
+    <operation name="setTr_CicloFim" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_CicloFim" />
+      <output message="tns:setTr_CicloFimResponse" />
+      <fault name="FalhaSnapshot" message="tns:FalhaSnapshot" />
+    </operation>
+    <operation name="setDadosColetados">
+      <input message="tns:setDadosColetados" />
+      <output message="tns:setDadosColetadosResponse" />
+    </operation>
+    <operation name="setTr_integracaoMws" parameterOrder="arg0 arg1">
+      <input message="tns:setTr_integracaoMws" />
+      <output message="tns:setTr_integracaoMwsResponse" />
+    </operation>
+    <operation name="setListaDadosColetados">
+      <input message="tns:setListaDadosColetados" />
+      <output message="tns:setListaDadosColetadosResponse" />
+    </operation>
+    <operation name="getTr_integracaoMws">
+      <input message="tns:getTr_integracaoMws" />
+      <output message="tns:getTr_integracaoMwsResponse" />
+    </operation>
+    <operation name="getMaiorParadaColetaComAndon" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:getMaiorParadaColetaComAndon" />
+      <output message="tns:getMaiorParadaColetaComAndonResponse" />
+    </operation>
+    <operation name="getGraficoOEEHoraHora" parameterOrder="arg0 arg1">
+      <input message="tns:getGraficoOEEHoraHora" />
+      <output message="tns:getGraficoOEEHoraHoraResponse" />
+    </operation>
+    <operation name="getInfoUltimoRefugo">
+      <input message="tns:getInfoUltimoRefugo" />
+      <output message="tns:getInfoUltimoRefugoResponse" />
+    </operation>
+    <operation name="setRegistroBarCode">
+      <input message="tns:setRegistroBarCode" />
+      <output message="tns:setRegistroBarCodeResponse" />
+    </operation>
+    <operation name="setTr_LancaEventoRefugo" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6">
+      <input message="tns:setTr_LancaEventoRefugo" />
+      <output message="tns:setTr_LancaEventoRefugoResponse" />
+    </operation>
+    <operation name="setTr_CicloInicio" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_CicloInicio" />
+      <output message="tns:setTr_CicloInicioResponse" />
+    </operation>
+    <operation name="getTr_InspecaoManual" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_InspecaoManual" />
+      <output message="tns:getTr_InspecaoManualResponse" />
+    </operation>
+    <operation name="setTr_InsereAnotacaoParada" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_InsereAnotacaoParada" />
+      <output message="tns:setTr_InsereAnotacaoParadaResponse" />
+    </operation>
+    <operation name="setTr_InspecaoManual" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+      <input message="tns:setTr_InspecaoManual" />
+      <output message="tns:setTr_InspecaoManualResponse" />
+    </operation>
+    <operation name="setTr_ApagaUltimoRefugo" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5">
+      <input message="tns:setTr_ApagaUltimoRefugo" />
+      <output message="tns:setTr_ApagaUltimoRefugoResponse" />
+    </operation>
+    <operation name="setTr_ApontamentoAramado" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setTr_ApontamentoAramado" />
+      <output message="tns:setTr_ApontamentoAramadoResponse" />
+    </operation>
+    <operation name="getTr_ValidaCodRefugo" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_ValidaCodRefugo" />
+      <output message="tns:getTr_ValidaCodRefugoResponse" />
+    </operation>
+    <operation name="verificaSeJaEfetouPesagem">
+      <input message="tns:verificaSeJaEfetouPesagem" />
+      <output message="tns:verificaSeJaEfetouPesagemResponse" />
+    </operation>
+    <operation name="getDadosFitesa">
+      <input message="tns:getDadosFitesa" />
+      <output message="tns:getDadosFitesaResponse" />
+    </operation>
+    <operation name="GetNomeOperador" parameterOrder="cdusuario idUP">
+      <input message="tns:GetNomeOperador" />
+      <output message="tns:GetNomeOperadorResponse" />
+    </operation>
+    <operation name="getTr_ExisteOperacao" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:getTr_ExisteOperacao" />
+      <output message="tns:getTr_ExisteOperacaoResponse" />
+    </operation>
+    <operation name="getTr_OPsEmAbertoMaquina">
+      <input message="tns:getTr_OPsEmAbertoMaquina" />
+      <output message="tns:getTr_OPsEmAbertoMaquinaResponse" />
+    </operation>
+    <operation name="getTr_SincronizaIHMBalanca">
+      <input message="tns:getTr_SincronizaIHMBalanca" />
+      <output message="tns:getTr_SincronizaIHMBalancaResponse" />
+    </operation>
+    <operation name="lancaPerdaResinaAmericaTampas" parameterOrder="idUP valor dthr">
+      <input message="tns:lancaPerdaResinaAmericaTampas" />
+      <output message="tns:lancaPerdaResinaAmericaTampasResponse" />
+    </operation>
+    <operation name="getTr_LoginsAbertosUP">
+      <input message="tns:getTr_LoginsAbertosUP" />
+      <output message="tns:getTr_LoginsAbertosUPResponse" />
+    </operation>
+    <operation name="getTr_OPQtdUltApont">
+      <input message="tns:getTr_OPQtdUltApont" />
+      <output message="tns:getTr_OPQtdUltApontResponse" />
+    </operation>
+    <operation name="lancaPesagemAmericaTampas" parameterOrder="idUP valor dthr">
+      <input message="tns:lancaPesagemAmericaTampas" />
+      <output message="tns:lancaPesagemAmericaTampasResponse" />
+    </operation>
+    <operation name="setTr_FechaOPColetaDiscreta" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7">
+      <input message="tns:setTr_FechaOPColetaDiscreta" />
+      <output message="tns:setTr_FechaOPColetaDiscretaResponse" />
+    </operation>
+    <operation name="getTr_RecuperaOperacao" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:getTr_RecuperaOperacao" />
+      <output message="tns:getTr_RecuperaOperacaoResponse" />
+    </operation>
+    <operation name="getTr_TabParadaSetaAnotacao" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_TabParadaSetaAnotacao" />
+      <output message="tns:getTr_TabParadaSetaAnotacaoResponse" />
+    </operation>
+    <operation name="lancaIncProdPlan" parameterOrder="idUP quantidade dthrevt">
+      <input message="tns:lancaIncProdPlan" />
+      <output message="tns:lancaIncProdPlanResponse" />
+    </operation>
+    <operation name="mudancaCavidadesAtivasNomolde" parameterOrder="idUP valor dthr">
+      <input message="tns:mudancaCavidadesAtivasNomolde" />
+      <output message="tns:mudancaCavidadesAtivasNomoldeResponse" />
+    </operation>
+    <operation name="setTr_ApontaConsumoCCK" parameterOrder="idUp dthr dadosCCKDTO">
+      <input message="tns:setTr_ApontaConsumoCCK" />
+      <output message="tns:setTr_ApontaConsumoCCKResponse" />
+    </operation>
+    <operation name="getTr_OpCarregadaEmMaquina" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_OpCarregadaEmMaquina" />
+      <output message="tns:getTr_OpCarregadaEmMaquinaResponse" />
+    </operation>
+    <operation name="getTr_LoginAbertoMaquina" parameterOrder="idUp cdOperador">
+      <input message="tns:getTr_LoginAbertoMaquina" />
+      <output message="tns:getTr_LoginAbertoMaquinaResponse" />
+    </operation>
+    <operation name="getIdEmpresaInjet">
+      <input message="tns:getIdEmpresaInjet" />
+      <output message="tns:getIdEmpresaInjetResponse" />
+    </operation>
+    <operation name="getTr_ParadaEmAbertoMaquina" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_ParadaEmAbertoMaquina" />
+      <output message="tns:getTr_ParadaEmAbertoMaquinaResponse" />
+    </operation>
+    <operation name="setValidaPesagem" parameterOrder="idUp dadosDTO peso">
+      <input message="tns:setValidaPesagem" />
+      <output message="tns:setValidaPesagemResponse" />
+    </operation>
+    <operation name="pesquisarMsMsPorURLConexaoComParametro">
+      <input message="tns:pesquisarMsMsPorURLConexaoComParametro" />
+      <output message="tns:pesquisarMsMsPorURLConexaoComParametroResponse" />
+    </operation>
+    <operation name="validaErro">
+      <input message="tns:validaErro" />
+      <output message="tns:validaErroResponse" />
+    </operation>
+    <operation name="registraIhmNoMs" parameterOrder="arg0 arg1">
+      <input message="tns:registraIhmNoMs" />
+      <output message="tns:registraIhmNoMsResponse" />
+    </operation>
+    <operation name="getTr_Autorizacao" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5">
+      <input message="tns:getTr_Autorizacao" />
+      <output message="tns:getTr_AutorizacaoResponse" />
+    </operation>
+    <operation name="pesquisarMsIcPorUrlConexao">
+      <input message="tns:pesquisarMsIcPorUrlConexao" />
+      <output message="tns:pesquisarMsIcPorUrlConexaoResponse" />
+    </operation>
+    <operation name="getListaMsicup">
+      <input message="tns:getListaMsicup" />
+      <output message="tns:getListaMsicupResponse" />
+    </operation>
+    <operation name="getUpsIHM" parameterOrder="arg0 arg1">
+      <input message="tns:getUpsIHM" />
+      <output message="tns:getUpsIHMResponse" />
+    </operation>
+    <operation name="isOperador">
+      <input message="tns:isOperador" />
+      <output message="tns:isOperadorResponse" />
+    </operation>
+    <operation name="setTr_removeInspecoesInvalidas">
+      <input message="tns:setTr_removeInspecoesInvalidas" />
+      <output message="tns:setTr_removeInspecoesInvalidasResponse" />
+    </operation>
+    <operation name="setTr_LancaEventoRefugoDefeito" parameterOrder="arg0 arg1">
+      <input message="tns:setTr_LancaEventoRefugoDefeito" />
+      <output message="tns:setTr_LancaEventoRefugoDefeitoResponse" />
+    </operation>
+    <operation name="getTr_ValidacaoNovaOPColetaDiscreta" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:getTr_ValidacaoNovaOPColetaDiscreta" />
+      <output message="tns:getTr_ValidacaoNovaOPColetaDiscretaResponse" />
+    </operation>
+    <operation name="getTr_UPsComParadaEmAbertoOperacaoInformada" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_UPsComParadaEmAbertoOperacaoInformada" />
+      <output message="tns:getTr_UPsComParadaEmAbertoOperacaoInformadaResponse" />
+    </operation>
+    <operation name="getTr_verificaSePedeComplemento" parameterOrder="idUP nrop">
+      <input message="tns:getTr_verificaSePedeComplemento" />
+      <output message="tns:getTr_verificaSePedeComplementoResponse" />
+    </operation>
+    <operation name="setTr_ApontaAbertParadaColetaDiscreta" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+      <input message="tns:setTr_ApontaAbertParadaColetaDiscreta" />
+      <output message="tns:setTr_ApontaAbertParadaColetaDiscretaResponse" />
+    </operation>
+    <operation name="getMaioresParadasColetaComAndon" parameterOrder="arg0 arg1">
+      <input message="tns:getMaioresParadasColetaComAndon" />
+      <output message="tns:getMaioresParadasColetaComAndonResponse" />
+    </operation>
+    <operation name="setTr_ApontaAbertLoginColetaDiscreta" parameterOrder="idUp dthrEvento cdOperacao cdOperador">
+      <input message="tns:setTr_ApontaAbertLoginColetaDiscreta" />
+      <output message="tns:setTr_ApontaAbertLoginColetaDiscretaResponse" />
+    </operation>
+    <operation name="setTr_FechaLoginColetaDiscreta" parameterOrder="idUp dthrEvento dtHrLogin cdOperacao cdOperador idLoginEmAberto">
+      <input message="tns:setTr_FechaLoginColetaDiscreta" />
+      <output message="tns:setTr_FechaLoginColetaDiscretaResponse" />
+    </operation>
+    <operation name="setTr_ExisteLoginAbertoMaquina" parameterOrder="idUp cdOperador">
+      <input message="tns:setTr_ExisteLoginAbertoMaquina" />
+      <output message="tns:setTr_ExisteLoginAbertoMaquinaResponse" />
+    </operation>
+    <operation name="getTr_UPsSemLoginOperadorInformado" parameterOrder="mac cdOperador">
+      <input message="tns:getTr_UPsSemLoginOperadorInformado" />
+      <output message="tns:getTr_UPsSemLoginOperadorInformadoResponse" />
+    </operation>
+    <operation name="getTr_ExisteParadaEmAbertoMaquina">
+      <input message="tns:getTr_ExisteParadaEmAbertoMaquina" />
+      <output message="tns:getTr_ExisteParadaEmAbertoMaquinaResponse" />
+    </operation>
+    <operation name="setTr_ApontaFechamParadaColetaDiscreta" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5">
+      <input message="tns:setTr_ApontaFechamParadaColetaDiscreta" />
+      <output message="tns:setTr_ApontaFechamParadaColetaDiscretaResponse" />
+    </operation>
+    <operation name="setTr_ApontaProducaoColetaDiscreta" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+      <input message="tns:setTr_ApontaProducaoColetaDiscreta" />
+      <output message="tns:setTr_ApontaProducaoColetaDiscretaResponse" />
+    </operation>
+    <operation name="obtemListaDeVariaveisParaAferir">
+      <input message="tns:obtemListaDeVariaveisParaAferir" />
+      <output message="tns:obtemListaDeVariaveisParaAferirResponse" />
+    </operation>
+    <operation name="getTr_UPsComLoginAbertoOperadorInformado" parameterOrder="mac cdOperacao cdOperador">
+      <input message="tns:getTr_UPsComLoginAbertoOperadorInformado" />
+      <output message="tns:getTr_UPsComLoginAbertoOperadorInformadoResponse" />
+    </operation>
+    <operation name="getTr_ApontaRefugoColetaDiscreta" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+      <input message="tns:getTr_ApontaRefugoColetaDiscreta" />
+      <output message="tns:getTr_ApontaRefugoColetaDiscretaResponse" />
+    </operation>
+    <operation name="finalParada">
+      <input message="tns:finalParada" />
+      <output message="tns:finalParadaResponse" />
+    </operation>
+    <operation name="setUPBeatMac" parameterOrder="arg0 arg1">
+      <input message="tns:setUPBeatMac" />
+      <output message="tns:setUPBeatMacResponse" />
+    </operation>
+    <operation name="setUPBeat" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setUPBeat" />
+      <output message="tns:setUPBeatResponse" />
+    </operation>
+    <operation name="setTr_Consula" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_Consula" />
+      <output message="tns:setTr_ConsulaResponse" />
+    </operation>
+    <operation name="setTr_ApontaFechamentoLoginColetaDiscretaTodasUPs" parameterOrder="mac dthrEvento cdOperacao cdOperador">
+      <input message="tns:setTr_ApontaFechamentoLoginColetaDiscretaTodasUPs" />
+      <output message="tns:setTr_ApontaFechamentoLoginColetaDiscretaTodasUPsResponse" />
+    </operation>
+    <operation name="setTr_ApontaFechamentoParadaColetaDiscretaTodasUPs" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_ApontaFechamentoParadaColetaDiscretaTodasUPs" />
+      <output message="tns:setTr_ApontaFechamentoParadaColetaDiscretaTodasUPsResponse" />
+    </operation>
+    <operation name="setTr_ApontaAberturaParadaColetaDiscretaTodasUPs" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_ApontaAberturaParadaColetaDiscretaTodasUPs" />
+      <output message="tns:setTr_ApontaAberturaParadaColetaDiscretaTodasUPsResponse" />
+    </operation>
+    <operation name="setTr_ApontaAberturaLoginColetaDiscretaTodasUPs" parameterOrder="mac dthrEvento cdOperacao cdOperador">
+      <input message="tns:setTr_ApontaAberturaLoginColetaDiscretaTodasUPs" />
+      <output message="tns:setTr_ApontaAberturaLoginColetaDiscretaTodasUPsResponse" />
+    </operation>
+    <operation name="getTr_DncTransferencia">
+      <input message="tns:getTr_DncTransferencia" />
+      <output message="tns:getTr_DncTransferenciaResponse" />
+    </operation>
+    <operation name="getTr_sincronizaHorario">
+      <input message="tns:getTr_sincronizaHorario" />
+      <output message="tns:getTr_sincronizaHorarioResponse" />
+    </operation>
+    <operation name="getTr_inicializacao" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:getTr_inicializacao" />
+      <output message="tns:getTr_inicializacaoResponse" />
+    </operation>
+    <operation name="getTr_alertasAbertos">
+      <input message="tns:getTr_alertasAbertos" />
+      <output message="tns:getTr_alertasAbertosResponse" />
+    </operation>
+    <operation name="setTr_alertaFim" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_alertaFim" />
+      <output message="tns:setTr_alertaFimResponse" />
+    </operation>
+    <operation name="setTr_alertaInicio" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_alertaInicio" />
+      <output message="tns:setTr_alertaInicioResponse" />
+    </operation>
+    <operation name="removeRegistraIhmNoMs" parameterOrder="arg0 arg1">
+      <input message="tns:removeRegistraIhmNoMs" />
+      <output message="tns:removeRegistraIhmNoMsResponse" />
+    </operation>
+    <operation name="getTr_TabAlertaSetaCod">
+      <input message="tns:getTr_TabAlertaSetaCod" />
+      <output message="tns:getTr_TabAlertaSetaCodResponse" />
+    </operation>
+    <operation name="getPesoProduto" parameterOrder="idUP Cdprod">
+      <input message="tns:getPesoProduto" />
+      <output message="tns:getPesoProdutoResponse" />
+    </operation>
+    <operation name="setCepOPC" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5">
+      <input message="tns:setCepOPC" />
+      <output message="tns:setCepOPCResponse" />
+    </operation>
+    <operation name="getTr_validaAcao">
+      <input message="tns:getTr_validaAcao" />
+      <output message="tns:getTr_validaAcaoResponse" />
+    </operation>
+    <operation name="getTr_operadoresLogados">
+      <input message="tns:getTr_operadoresLogados" />
+      <output message="tns:getTr_operadoresLogadosResponse" />
+    </operation>
+    <operation name="getTr_stProdutoUsuario">
+      <input message="tns:getTr_stProdutoUsuario" />
+      <output message="tns:getTr_stProdutoUsuarioResponse" />
+    </operation>
+    <operation name="setTr_operadorInicio" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_operadorInicio" />
+      <output message="tns:setTr_operadorInicioResponse" />
+    </operation>
+    <operation name="getTr_validaCausa">
+      <input message="tns:getTr_validaCausa" />
+      <output message="tns:getTr_validaCausaResponse" />
+    </operation>
+    <operation name="getTr_validaJustificativa">
+      <input message="tns:getTr_validaJustificativa" />
+      <output message="tns:getTr_validaJustificativaResponse" />
+    </operation>
+    <operation name="getTr_validaLocalParada">
+      <input message="tns:getTr_validaLocalParada" />
+      <output message="tns:getTr_validaLocalParadaResponse" />
+    </operation>
+    <operation name="validaMotivoVariacaoRitmo" parameterOrder="arg0 arg1">
+      <input message="tns:validaMotivoVariacaoRitmo" />
+      <output message="tns:validaMotivoVariacaoRitmoResponse" />
+    </operation>
+    <operation name="setTr_operadorFim" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setTr_operadorFim" />
+      <output message="tns:setTr_operadorFimResponse" />
+    </operation>
+    <operation name="getTr_TabParadaSetaCod" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_TabParadaSetaCod" />
+      <output message="tns:getTr_TabParadaSetaCodResponse" />
+    </operation>
+    <operation name="setTr_lancaEvento46" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_lancaEvento46" />
+      <output message="tns:setTr_lancaEvento46Response" />
+    </operation>
+    <operation name="setTr_paradaFim" parameterOrder="arg0 arg1">
+      <input message="tns:setTr_paradaFim" />
+      <output message="tns:setTr_paradaFimResponse" />
+    </operation>
+    <operation name="setTr_paradaInicio" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+      <input message="tns:setTr_paradaInicio" />
+      <output message="tns:setTr_paradaInicioResponse" />
+    </operation>
+    <operation name="setTr_paradaMotivo" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 arg9 arg10 arg11 arg12">
+      <input message="tns:setTr_paradaMotivo" />
+      <output message="tns:setTr_paradaMotivoResponse" />
+    </operation>
+    <operation name="heartbeat">
+      <input message="tns:heartbeat" />
+      <output message="tns:heartbeatResponse" />
+    </operation>
+    <operation name="setTr_MCSemConexao" parameterOrder="arg0 arg1">
+      <input message="tns:setTr_MCSemConexao" />
+      <output message="tns:setTr_MCSemConexaoResponse" />
+    </operation>
+    <operation name="getTr_IdupMACColetaDiscreta">
+      <input message="tns:getTr_IdupMACColetaDiscreta" />
+      <output message="tns:getTr_IdupMACColetaDiscretaResponse" />
+    </operation>
+    <operation name="getTr_planejamento" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:getTr_planejamento" />
+      <output message="tns:getTr_planejamentoResponse" />
+    </operation>
+    <operation name="setTr_fimplanejamentoParcial" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setTr_fimplanejamentoParcial" />
+      <output message="tns:setTr_fimplanejamentoParcialResponse" />
+    </operation>
+    <operation name="setTr_getRele8">
+      <input message="tns:setTr_getRele8" />
+      <output message="tns:setTr_getRele8Response" />
+    </operation>
+    <operation name="setTr_getPrUpAndonPrcsft">
+      <input message="tns:setTr_getPrUpAndonPrcsft" />
+      <output message="tns:setTr_getPrUpAndonPrcsftResponse" />
+    </operation>
+    <operation name="getTr_AutorizacaoLogout" parameterOrder="arg0 arg1 arg2 arg3 arg4">
+      <input message="tns:getTr_AutorizacaoLogout" />
+      <output message="tns:getTr_AutorizacaoLogoutResponse" />
+    </operation>
+    <operation name="inicializacaoSemEvento">
+      <input message="tns:inicializacaoSemEvento" />
+      <output message="tns:inicializacaoSemEventoResponse" />
+    </operation>
+    <operation name="getTr_ValidaLoginSenha" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:getTr_ValidaLoginSenha" />
+      <output message="tns:getTr_ValidaLoginSenhaResponse" />
+    </operation>
+    <operation name="setTr_trataInicioDeCIP" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_trataInicioDeCIP" />
+      <output message="tns:setTr_trataInicioDeCIPResponse" />
+    </operation>
+    <operation name="setTr_fimplanejamento" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_fimplanejamento" />
+      <output message="tns:setTr_fimplanejamentoResponse" />
+    </operation>
+    <operation name="setTr_trataFimCIP" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_trataFimCIP" />
+      <output message="tns:setTr_trataFimCIPResponse" />
+    </operation>
+    <operation name="setTr_alteraStatusApntSap" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_alteraStatusApntSap" />
+      <output message="tns:setTr_alteraStatusApntSapResponse" />
+    </operation>
+    <operation name="getTr_VerificaExecInspecao">
+      <input message="tns:getTr_VerificaExecInspecao" />
+      <output message="tns:getTr_VerificaExecInspecaoResponse" />
+    </operation>
+    <operation name="setTr_confirmacaoOp" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setTr_confirmacaoOp" />
+      <output message="tns:setTr_confirmacaoOpResponse" />
+    </operation>
+    <operation name="setTr_registroIntegracaoDoal" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setTr_registroIntegracaoDoal" />
+      <output message="tns:setTr_registroIntegracaoDoalResponse" />
+    </operation>
+    <operation name="getTr_statusPrUpAndon" parameterOrder="arg0 arg1">
+      <input message="tns:getTr_statusPrUpAndon" />
+      <output message="tns:getTr_statusPrUpAndonResponse" />
+    </operation>
+    <operation name="setTr_buscaAlertaProbQuali">
+      <input message="tns:setTr_buscaAlertaProbQuali" />
+      <output message="tns:setTr_buscaAlertaProbQualiResponse" />
+    </operation>
+    <operation name="setTr_LancaEventoInspecao" parameterOrder="arg0 arg1">
+      <input message="tns:setTr_LancaEventoInspecao" />
+      <output message="tns:setTr_LancaEventoInspecaoResponse" />
+    </operation>
+    <operation name="setTr_LancaAberturaInspecao" parameterOrder="arg0 arg1">
+      <input message="tns:setTr_LancaAberturaInspecao" />
+      <output message="tns:setTr_LancaAberturaInspecaoResponse" />
+    </operation>
+    <operation name="getTr_ParametrosInspecao">
+      <input message="tns:getTr_ParametrosInspecao" />
+      <output message="tns:getTr_ParametrosInspecaoResponse" />
+    </operation>
+    <operation name="setTr_encerraAlertaProbQuali" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_encerraAlertaProbQuali" />
+      <output message="tns:setTr_encerraAlertaProbQualiResponse" />
+    </operation>
+    <operation name="setTr_alteraCartoesKanban" parameterOrder="arg0 arg1 arg2 arg3">
+      <input message="tns:setTr_alteraCartoesKanban" />
+      <output message="tns:setTr_alteraCartoesKanbanResponse" />
+    </operation>
+    <operation name="getTr_dadosIntegracaoDoal">
+      <input message="tns:getTr_dadosIntegracaoDoal" />
+      <output message="tns:getTr_dadosIntegracaoDoalResponse" />
+    </operation>
+    <operation name="setTr_lancaApntMateriaPrima" parameterOrder="arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8">
+      <input message="tns:setTr_lancaApntMateriaPrima" />
+      <output message="tns:setTr_lancaApntMateriaPrimaResponse" />
+    </operation>
+    <operation name="setTr_fimInspecao" parameterOrder="arg0 arg1 arg2">
+      <input message="tns:setTr_fimInspecao" />
+      <output message="tns:setTr_fimInspecaoResponse" />
+    </operation>
+  </portType>
+  <binding name="mswsPortBinding" type="tns:msws">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="setTr_CicloFim">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+      <fault name="FalhaSnapshot">
+        <soap:fault use="literal" name="FalhaSnapshot" namespace="" />
+      </fault>
+    </operation>
+    <operation name="setDadosColetados">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_integracaoMws">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setListaDadosColetados">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_integracaoMws">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getMaiorParadaColetaComAndon">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getGraficoOEEHoraHora">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getInfoUltimoRefugo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setRegistroBarCode">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_LancaEventoRefugo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_CicloInicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_InspecaoManual">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_InsereAnotacaoParada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_InspecaoManual">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApagaUltimoRefugo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontamentoAramado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ValidaCodRefugo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="verificaSeJaEfetouPesagem">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getDadosFitesa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="GetNomeOperador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ExisteOperacao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_OPsEmAbertoMaquina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_SincronizaIHMBalanca">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="lancaPerdaResinaAmericaTampas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_LoginsAbertosUP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_OPQtdUltApont">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="lancaPesagemAmericaTampas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_FechaOPColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_RecuperaOperacao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_TabParadaSetaAnotacao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="lancaIncProdPlan">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="mudancaCavidadesAtivasNomolde">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaConsumoCCK">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_OpCarregadaEmMaquina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_LoginAbertoMaquina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getIdEmpresaInjet">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ParadaEmAbertoMaquina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setValidaPesagem">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="pesquisarMsMsPorURLConexaoComParametro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="validaErro">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="registraIhmNoMs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_Autorizacao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="pesquisarMsIcPorUrlConexao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getListaMsicup">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getUpsIHM">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="isOperador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_removeInspecoesInvalidas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_LancaEventoRefugoDefeito">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ValidacaoNovaOPColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_UPsComParadaEmAbertoOperacaoInformada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_verificaSePedeComplemento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaAbertParadaColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getMaioresParadasColetaComAndon">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaAbertLoginColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_FechaLoginColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ExisteLoginAbertoMaquina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_UPsSemLoginOperadorInformado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ExisteParadaEmAbertoMaquina">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaFechamParadaColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaProducaoColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="obtemListaDeVariaveisParaAferir">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_UPsComLoginAbertoOperadorInformado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ApontaRefugoColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="finalParada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setUPBeatMac">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setUPBeat">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_Consula">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaFechamentoLoginColetaDiscretaTodasUPs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaFechamentoParadaColetaDiscretaTodasUPs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaAberturaParadaColetaDiscretaTodasUPs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_ApontaAberturaLoginColetaDiscretaTodasUPs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_DncTransferencia">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_sincronizaHorario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_inicializacao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_alertasAbertos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_alertaFim">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_alertaInicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="removeRegistraIhmNoMs">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_TabAlertaSetaCod">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getPesoProduto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setCepOPC">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_validaAcao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_operadoresLogados">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_stProdutoUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_operadorInicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_validaCausa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_validaJustificativa">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_validaLocalParada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="validaMotivoVariacaoRitmo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_operadorFim">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_TabParadaSetaCod">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_lancaEvento46">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_paradaFim">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_paradaInicio">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_paradaMotivo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="heartbeat">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_MCSemConexao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_IdupMACColetaDiscreta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_planejamento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_fimplanejamentoParcial">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_getRele8">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_getPrUpAndonPrcsft">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_AutorizacaoLogout">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="inicializacaoSemEvento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ValidaLoginSenha">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_trataInicioDeCIP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_fimplanejamento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_trataFimCIP">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_alteraStatusApntSap">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_VerificaExecInspecao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_confirmacaoOp">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_registroIntegracaoDoal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_statusPrUpAndon">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_buscaAlertaProbQuali">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_LancaEventoInspecao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_LancaAberturaInspecao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_ParametrosInspecao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_encerraAlertaProbQuali">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_alteraCartoesKanban">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="getTr_dadosIntegracaoDoal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_lancaApntMateriaPrima">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+    <operation name="setTr_fimInspecao">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </input>
+      <output>
+        <soap:body use="literal" namespace="http://ms/msws" />
+      </output>
+    </operation>
+  </binding>
+  <service name="msws">
+    <port name="mswsPort" binding="tns:mswsPortBinding">
+      <soap:address location="http://localhost:8080/idw/msws" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ns1="http://idw/idwws" targetNamespace="http://ms/msws" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/idw/idwws?xsd=2" namespace="http://idw/idwws" />
+  <xs:element name="FalhaSnapshotException" nillable="true" type="ns1:FalhaSnapshotException" />
+</xs:schema>

@@ -1,0 +1,59 @@
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.exe.config
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.exe
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.XmlSerializers.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.pdb
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\Newtonsoft.Json.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\NLog.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpcNetApi.Com.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpcNetApi.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpcNetApi.Xml.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpenNETCF.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpenNETCF.Net.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.Primitives.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.WebRequest.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Runtime.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Threading.Tasks.dll
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\Newtonsoft.Json.xml
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.xml
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.Primitives.xml
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.WebRequest.xml
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Runtime.xml
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Threading.Tasks.xml
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.Properties.Resources.resources
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.tela.TelaPrincipal.resources
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.csproj.GenerateResource.Cache
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.exe
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.pdb
+C:\Users\MAPTECHNOLOGY\Documents\Visual Studio 2010\Projects\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.XmlSerializers.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.exe.config
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.exe
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.pdb
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.XmlSerializers.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.exe
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.XmlSerializers.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\ColetaInjetoraHaitian.pdb
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\Newtonsoft.Json.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\NLog.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpcNetApi.Com.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpcNetApi.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpcNetApi.Xml.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpenNETCF.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\OpenNETCF.Net.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.Extensions.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.Primitives.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.WebRequest.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Runtime.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Threading.Tasks.dll
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\Newtonsoft.Json.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.Extensions.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.Primitives.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Net.Http.WebRequest.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Runtime.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\bin\Release\System.Threading.Tasks.xml
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.csprojResolveAssemblyReference.cache
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.Properties.Resources.resources
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.tela.TelaPrincipal.resources
+C:\Users\Desenvolvimento\Desktop\Haitian\ProjetoColeta\ColetaInjetoraHaitian\ColetaInjetoraHaitian\obj\x86\Release\ColetaInjetoraHaitian.csproj.GenerateResource.Cache
