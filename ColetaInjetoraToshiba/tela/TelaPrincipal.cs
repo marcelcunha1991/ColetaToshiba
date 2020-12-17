@@ -211,7 +211,7 @@ namespace ColetaInjetoraToshiba.tela
         private void button1_Click(object sender, EventArgs e)
         {
 
-            iniciaColeta("123.123.123.190");            
+            iniciaColeta("123.123.123.23");            
 
         }
 
@@ -415,7 +415,7 @@ namespace ColetaInjetoraToshiba.tela
                             
 
 
-                        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametros/insert");
+                        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.23:3000/parametros/insert");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
                       
@@ -552,7 +552,7 @@ namespace ColetaInjetoraToshiba.tela
                         SCREW_ROTATION_SPEED = screwRotationSpeedAux;
 
 
-                        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametrosAtuais/insert");
+                        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.23:3000/parametrosAtuais/insert");
                         httpWebRequest.ContentType = "application/json";
                         httpWebRequest.Method = "POST";
 
