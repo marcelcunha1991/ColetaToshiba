@@ -84,6 +84,18 @@ namespace ColetaInjetoraToshiba.tela
         private String DEWELL_PRESSURE = "0.0";
         private String SCREW_ROTATION_SPEED = "0.0";
 
+        private String TEMPERATURE_HEN = "0.0";
+        private String TEMPERATURE_HN = "0.0";
+        private String TEMPERATURE_H1 = "0.0";
+        private String TEMPERATURE_H2 = "0.0";
+        private String TEMPERATURE_H3 = "0.0";
+        private String TEMPERATURE_H4 = "0.0";
+        private String TEMPERATURE_H5 = "0.0";
+        private String TEMPERATURE_OIL = "0.0";
+        private String TEMPERATURE_HOP = "0.0";
+       
+
+
 
 
 
@@ -98,8 +110,8 @@ namespace ColetaInjetoraToshiba.tela
 
         public void iniciaColeta(String ip) {           
         
-            string mac = "5C:F3:FC:FD:E1:F5";
-            textBoxMac.Text = mac;
+            string mac = "5C:F3:FC:FD:E1:F5";            
+
             string ipToshiba = ip;
 
             int porta = 120;
@@ -129,12 +141,16 @@ namespace ColetaInjetoraToshiba.tela
             vetorRequisicao[12] = 0x30;
             vetorRequisicao[13] = 0x34;
 
+            int data = Int32.Parse(txtCodigo.Text);
+            byte number = Convert.ToByte(data);
+
             ////DATA
             vetorRequisicao[14] = 0x0;
             vetorRequisicao[15] = 0x0;
 
             vetorRequisicao[16] = 0x0;
-            vetorRequisicao[17] = 0x97;
+            vetorRequisicao[17] = number;
+            //vetorRequisicao[17] = 0xa4;
 
             serverTcp = new TcpListener(local, porta);
             serverTcp.Start();
@@ -211,8 +227,16 @@ namespace ColetaInjetoraToshiba.tela
         private void button1_Click(object sender, EventArgs e)
         {
 
-            iniciaColeta("123.123.123.190");            
+            Thread t = new Thread(NovaThread);
+            t.Start();
 
+            //iniciaColeta("123.123.123.190");            
+
+        }
+
+        public void NovaThread()
+        {
+            iniciaColeta(txtIpServidor.Text);
         }
 
         public void HandleClient(Object obj) {
@@ -220,9 +244,8 @@ namespace ColetaInjetoraToshiba.tela
 
             TcpClient client = (TcpClient)obj;
 
-
-           String ipServer = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();
-           
+            String ipMaquina = textBoxMac.Text;
+            String programa = txtCodigo.Text;
 
             try {
                 var stream = client.GetStream();
@@ -241,6 +264,8 @@ namespace ColetaInjetoraToshiba.tela
             try { 
                 //while((i = stream1.Read(bytes,0,bytes.Length)) < 50000){
                 while(true){
+
+                    String ipServer = ((IPEndPoint)client.Client.RemoteEndPoint).Address.ToString();               
 
                     i = stream1.Read(bytes, 0, bytes.Length);
                     Console.WriteLine(i);
@@ -265,325 +290,393 @@ namespace ColetaInjetoraToshiba.tela
                         //Console.WriteLine("{1}: Received {0}", data, Thread.CurrentThread.ManagedThreadId);
                     }
 
-                    if (bytes[0] == 0x30 && bytes[1] == 0x31 && bytes[2] == 0x30 && bytes[3] == 0x30 && bytes[4] == 0x30 && bytes[5] == 0x31)
+                    if(ipMaquina == ipServer)
                     {
-                        Console.WriteLine("Entrou no pacote");
-                        Console.WriteLine(data[50]);
-                        //Console.WriteLine(data);
-                        string diahex = bytes[50].ToString("X");
-                        string meshex = bytes[51].ToString("X");
-                        string ano1hex = bytes[52].ToString("X");
-                        string ano2hex = bytes[53].ToString("X");
+                        if (bytes[0] == 0x30 && bytes[1] == 0x31 && bytes[2] == 0x30 && bytes[3] == 0x30 && bytes[4] == 0x30 && bytes[5] == 0x31)
+                        {
+                            Console.WriteLine("Entrou no pacote Data" + ipServer);
+                            Console.WriteLine(data[50]);
+                            //Console.WriteLine(data);
+                            string diahex = bytes[50].ToString("X");
+                            string meshex = bytes[51].ToString("X");
+                            string ano1hex = bytes[52].ToString("X");
+                            string ano2hex = bytes[53].ToString("X");
 
-                        //int dia = int.Parse(diahex, System.Globalization.NumberStyles.HexNumber);
-                        titulo = data.Substring(18, 19);
-                        date = diahex + "-" + meshex + "-" + ano1hex + ano2hex;
-                                                
-                        //incia em 230 (no caso fica 233 - 230)
-                        String viHex = bytes[231].ToString("X") + bytes[230].ToString("X");
-                        int vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        String viAux = vi.ToString();
-                        if (vi > 0)
-                            VI1 = viAux.Substring(0, viAux.Length - 1)+".0";
+                            //int dia = int.Parse(diahex, System.Globalization.NumberStyles.HexNumber);
+                            titulo = data.Substring(18, 19);
+                            date = diahex + "-" + meshex + "-" + ano1hex + ano2hex;
 
-                        //VI2 (234 e 235)
-                        viHex = bytes[235].ToString("X") + bytes[234].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI2 = viAux.Substring(0, viAux.Length - 1) + ".0";
+                            //incia em 230 (no caso fica 233 - 230)
+                            String viHex = bytes[231].ToString("X") + bytes[230].ToString("X");
+                            int vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            String viAux = vi.ToString();
+                            if (vi > 0)
+                                VI1 = viAux.Substring(0, viAux.Length - 1) + ".0";
 
-                        //VI3 (238 e 239)
-                        viHex = bytes[239].ToString("X") + bytes[238].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI3 = viAux.Substring(0, viAux.Length - 1) + ".0";
+                            //VI2 (234 e 235)
+                            viHex = bytes[235].ToString("X") + bytes[234].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI2 = viAux.Substring(0, viAux.Length - 1) + ".0";
 
-                        //VI4 (242 e 243)
-                        viHex = bytes[243].ToString("X") + bytes[242].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI4 = viAux.Substring(0, viAux.Length - 1) + ".0";
+                            //VI3 (238 e 239)
+                            viHex = bytes[239].ToString("X") + bytes[238].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI3 = viAux.Substring(0, viAux.Length - 1) + ".0";
 
-                        //VI5 (246 e 247)
-                        viHex = bytes[247].ToString("X") + bytes[246].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI5 = viAux.Substring(0, viAux.Length - 1) + ".0";
+                            //VI4 (242 e 243)
+                            viHex = bytes[243].ToString("X") + bytes[242].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI4 = viAux.Substring(0, viAux.Length - 1) + ".0";
 
-                        //VI6 (250 e 251)
-                        viHex = bytes[251].ToString("X") + bytes[250].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);                       
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI6 = viAux.Substring(0, viAux.Length - 1) + ".0";
+                            //VI5 (246 e 247)
+                            viHex = bytes[247].ToString("X") + bytes[246].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI5 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //VI6 (250 e 251)
+                            viHex = bytes[251].ToString("X") + bytes[250].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI6 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+
+
+                            //VI7 (254 e 255)
+                            viHex = bytes[255].ToString("X") + bytes[254].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI7 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //VI8 (258 e 259)
+                            viHex = bytes[259].ToString("X") + bytes[258].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI8 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //VI9 (262 e 263)
+                            viHex = bytes[263].ToString("X") + bytes[262].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI9 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //VI10 (266 e 267)
+                            viHex = bytes[267].ToString("X") + bytes[266].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VI10 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //VH1 (270 e 271)
+                            viHex = bytes[271].ToString("X") + bytes[270].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VH1 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //VH2 (274 e 275)
+                            viHex = bytes[275].ToString("X") + bytes[274].ToString("X");
+                            vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
+                            viAux = vi.ToString();
+                            if (vi > 0)
+                                VH2 = viAux.Substring(0, viAux.Length - 1) + ".0";
+
+                            //PI1 (278, 279, 280)
+
+                            String piHex = bytes[280].ToString("X") + bytes[279].ToString("X") + bytes[278].ToString("X");
+                            int pi = int.Parse(piHex, System.Globalization.NumberStyles.HexNumber);
+                            String piAux = pi.ToString();
+                            if (pi > 0)
+                            {
+                                if (pi > 10000)
+                                {
+                                    PI1 = piAux.Substring(0, piAux.Length - 2) + ".00";
+                                }
+                                else if (pi > 1000)
+                                {
+                                    PI1 = piAux.Substring(0, piAux.Length - 2) + ".00";
+                                }
+                                else
+                                {
+                                    PI1 = piAux.Substring(0, piAux.Length - 1) + ".0";
+                                }
+                            }
+
+
+                            //LS4 (318 e 319)
+                            String lsHex = bytes[321].ToString("X") + bytes[320].ToString("X") + bytes[319].ToString("X") + bytes[318].ToString("X");
+                            int ls = int.Parse(lsHex, System.Globalization.NumberStyles.HexNumber);
+                            String lsAux = ls.ToString();
+                            if (ls > 0)
+                                LS4 = lsAux.Substring(0, lsAux.Length - 3) + ".0";
+
+                            //LS4A (322 e 323)
+                            lsHex = bytes[325].ToString("X") + bytes[324].ToString("X") + bytes[323].ToString("X") + bytes[322].ToString("X");
+                            ls = int.Parse(lsHex, System.Globalization.NumberStyles.HexNumber);
+                            lsAux = ls.ToString();
+                            if (ls > 0)
+                            {
+                                if (ls > 10000)
+                                {
+                                    LS4A = lsAux.Substring(0, lsAux.Length - 3) + ".00";
+                                }
+                                else if (ls > 1000)
+                                {
+                                    LS4A = lsAux.Substring(0, lsAux.Length - 2) + ".00";
+                                }
+                                else
+                                {
+                                    LS4A = lsAux.Substring(0, lsAux.Length - 1) + ".0";
+                                }
+                            }
+
+
+
+                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametros/insert");
+                            httpWebRequest.ContentType = "application/json";
+                            httpWebRequest.Method = "POST";
+
+
+                            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                            {
+                                string json = "{\"mac\":\"" + ipServer + "\"" + "," +
+                      "\"VI1\":\"" + VI1 + "\"" + "," +
+                      "\"VI2\":\"" + VI2 + "\"" + "," +
+                      "\"VI3\":\"" + VI3 + "\"" + "," +
+                      "\"VI4\":\"" + VI4 + "\"" + "," +
+                      "\"VI5\":\"" + VI5 + "\"" + "," +
+                      "\"VI6\":\"" + VI6 + "\"" + "," +
+                      "\"VI7\":\"" + VI7 + "\"" + "," +
+                      "\"VI8\":\"" + VI8 + "\"" + "," +
+                      "\"VI9\":\"" + VI9 + "\"" + "," +
+                      "\"VI10\":\"" + VI10 + "\"" + "," +
+                      "\"VH1\":\"" + VH1 + "\"" + "," +
+                      "\"VH2\":\"" + VH2 + "\"" + "," +
+                      "\"PI1\":\"" + PI1 + "\"" + "," +
+                      "\"LS4\":\"" + LS4 + "\"" + "," +
+                      "\"LS4A\":\"" + LS4A + "\""
+                      + "}";
+
+                                streamWriter.Write(json);
+                            }
+
+                            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+
+
+
+
+
+                            //Print
+                            Console.WriteLine("Título:" + titulo + "\n" + "Data:" + date + "\n" + "VI_1:" + VI1);
+                            Console.WriteLine("VI_2:" + VI2);
+                            Console.WriteLine("LS4:" + LS4);
+                            Console.WriteLine("LS4A:" + LS4A);
+                            Console.WriteLine("Fim do teste!");
+
+                        }
+
+
+
+                        if (bytes[0] == 0x30 && bytes[1] == 0x31 && bytes[2] == 0x30 && bytes[3] == 0x30 && bytes[4] == 0x31 && bytes[5] == 0x31)
+                        {
+                            Console.WriteLine("Entrou no pacote de qualidade " + ipServer);
+
+
+
+                            //incia em 14 (no caso fica 17 - 14)
+                            String prodShot = bytes[17].ToString("X") + bytes[16].ToString("X") + bytes[15].ToString("X") + bytes[14].ToString("X");
+                            int int_prodShot = int.Parse(prodShot, System.Globalization.NumberStyles.HexNumber);
+                            String prodShotAux = int_prodShot.ToString();
+                            PRODUCTION_SHOT = prodShotAux;
+
+                            //incia em 18 (no caso fica 21 - 18)
+                            String ok_prodShot = bytes[21].ToString("X") + bytes[20].ToString("X") + bytes[19].ToString("X") + bytes[18].ToString("X");
+                            int int_ok_prodShot = int.Parse(ok_prodShot, System.Globalization.NumberStyles.HexNumber);
+                            String okprodShotAux = int_ok_prodShot.ToString();
+                            OK_PRODUCTION_SHOT = okprodShotAux;
+
+                            //incia em 26 (no caso fica 29 - 26)
+                            String printShot = bytes[29].ToString("X") + bytes[28].ToString("X") + bytes[27].ToString("X") + bytes[26].ToString("X");
+                            int int_printShot = int.Parse(printShot, System.Globalization.NumberStyles.HexNumber);
+                            String printShotAux = int_printShot.ToString();
+                            PRING_SHOT = printShotAux;
+
+                            //incia em 30 (no caso fica 33 - 30)
+                            String fillingTime = bytes[33].ToString("X") + bytes[32].ToString("X") + bytes[31].ToString("X") + bytes[30].ToString("X");
+                            int int_fillingTime = int.Parse(fillingTime, System.Globalization.NumberStyles.HexNumber);
+                            String fillingTimeAux = int_fillingTime.ToString();
+                            FILLING_TIME = fillingTimeAux;
+
+                            //incia em 34 (no caso fica 37 - 34)
+                            String chargingTime = bytes[37].ToString("X") + bytes[36].ToString("X") + bytes[35].ToString("X") + bytes[34].ToString("X");
+                            int int_chargingTime = int.Parse(chargingTime, System.Globalization.NumberStyles.HexNumber);
+                            String chargingTimeAux = int_chargingTime.ToString();
+                            CHARGIN_TIME = chargingTimeAux;
+
+                            //incia em 38 (no caso fica 41 - 38)
+                            String takeoutTime = bytes[41].ToString("X") + bytes[40].ToString("X") + bytes[39].ToString("X") + bytes[38].ToString("X");
+                            int int_takeoutTime = int.Parse(takeoutTime, System.Globalization.NumberStyles.HexNumber);
+                            String takeoutTimeAux = int_takeoutTime.ToString();
+                            TAKE_OUT_TIME = takeoutTimeAux;
+
+                            //incia em 42 (no caso fica 45 - 42)
+                            String cycleTime = bytes[45].ToString("X") + bytes[44].ToString("X") + bytes[43].ToString("X") + bytes[42].ToString("X");
+                            int int_cycleTime = int.Parse(cycleTime, System.Globalization.NumberStyles.HexNumber);
+                            String cycleTimeAux = int_cycleTime.ToString();
+                            CYCLE_TIME = cycleTimeAux.Insert(cycleTimeAux.Length - 2, ".");
+
+                            //incia em 46 (no caso fica 49 - 46)
+                            String minumumCushionPosition = bytes[49].ToString("X") + bytes[48].ToString("X") + bytes[47].ToString("X") + bytes[46].ToString("X");
+                            int int_minumumCushionPosition = int.Parse(minumumCushionPosition, System.Globalization.NumberStyles.HexNumber);
+                            String minumumCushionPositionAux = int_minumumCushionPosition.ToString();
+                            MINIMUN_CUSHION_POSITION = minumumCushionPositionAux.Insert(minumumCushionPositionAux.Length - 3, ".");
+
+                            //incia em 50 (no caso fica 53 - 50)
+                            String cushionPosition = bytes[53].ToString("X") + bytes[52].ToString("X") + bytes[51].ToString("X") + bytes[50].ToString("X");
+                            int int_cushionPosition = int.Parse(cushionPosition, System.Globalization.NumberStyles.HexNumber);
+                            String cushionPositionAux = int_cushionPosition.ToString();
+                            CUSHION_POSITION_ = cushionPositionAux.Insert(cushionPositionAux.Length - 3, ".");
+
+                            //incia em 54 (no caso fica 57 - 54)
+                            String dwellChnagePosition = bytes[57].ToString("X") + bytes[56].ToString("X") + bytes[55].ToString("X") + bytes[54].ToString("X");
+                            int int_dwellChnagePosition = int.Parse(dwellChnagePosition, System.Globalization.NumberStyles.HexNumber);
+                            String dwellChnagePositionAux = int_dwellChnagePosition.ToString();
+                            DWELL_CHANGE_POSITION = dwellChnagePositionAux.Insert(dwellChnagePositionAux.Length - 3, ".");
+
+                            //incia em 58 (no caso fica 61 - 58)
+                            String injetStartPosition = bytes[57].ToString("X") + bytes[56].ToString("X") + bytes[55].ToString("X") + bytes[54].ToString("X");
+                            int int_injetStartPosition = int.Parse(injetStartPosition, System.Globalization.NumberStyles.HexNumber);
+                            String injetStartPositionAux = int_injetStartPosition.ToString();
+                            INJECTION_START_POSITION = injetStartPositionAux.Insert(injetStartPositionAux.Length - 3, ".");
+
+                            //incia em 62 (no caso fica 65 - 62)
+                            String maxInjectPressure = bytes[65].ToString("X") + bytes[64].ToString("X") + bytes[63].ToString("X") + bytes[62].ToString("X");
+                            int int_maxInjectPressure = int.Parse(maxInjectPressure, System.Globalization.NumberStyles.HexNumber);
+                            String maxInjectPressureAux = int_maxInjectPressure.ToString();
+                            MAXIMUM_INJECTION_PRESSURE = maxInjectPressureAux.Insert(maxInjectPressureAux.Length - 3, ".");
+
+                            //incia em 66 (no caso fica 69 - 66)
+                            String dwellPressure = bytes[69].ToString("X") + bytes[68].ToString("X") + bytes[67].ToString("X") + bytes[66].ToString("X");
+                            int int_dwellPressure = int.Parse(dwellPressure, System.Globalization.NumberStyles.HexNumber);
+                            String dwellPressureAux = int_dwellPressure.ToString();
+                            DWELL_PRESSURE = dwellPressureAux.Insert(dwellPressureAux.Length - 2, ".");
+
+                            //incia em 70 (no caso fica 73 - 70)
+                            String screwRotationSpeed = bytes[73].ToString("X") + bytes[72].ToString("X") + bytes[71].ToString("X") + bytes[70].ToString("X");
+                            int int_screwRotationSpeed = int.Parse(screwRotationSpeed, System.Globalization.NumberStyles.HexNumber);
+                            String screwRotationSpeedAux = int_screwRotationSpeed.ToString();
+                            SCREW_ROTATION_SPEED = screwRotationSpeedAux;
+
+                            //incia em 86 (no caso fica 89 - 86)
+                            String temperature_hen = bytes[89].ToString("X") + bytes[88].ToString("X") + bytes[87].ToString("X") + bytes[86].ToString("X");
+                            int int_stemperature_hen = int.Parse(temperature_hen, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_henAux = int_stemperature_hen.ToString();
+                            TEMPERATURE_HEN = temperature_henAux.Insert(dwellPressureAux.Length - 1, ".");
+
+                            //incia em 90 (no caso fica 93 - 90)
+                            String temperature_hn = bytes[93].ToString("X") + bytes[92].ToString("X") + bytes[91].ToString("X") + bytes[90].ToString("X");
+                            int int_temperature_hn = int.Parse(temperature_hn, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_hnAux = int_temperature_hn.ToString();
+                            TEMPERATURE_HN = temperature_hnAux.Insert(dwellPressureAux.Length - 1, ".");
+
+
+                            //incia em 94 (no caso fica 97 - 94)
+                            String temperature_h1 = bytes[97].ToString("X") + bytes[96].ToString("X") + bytes[95].ToString("X") + bytes[94].ToString("X");
+                            int int_temperature_h1 = int.Parse(temperature_h1, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_h1Aux = int_temperature_h1.ToString();
+                            TEMPERATURE_H1 = temperature_h1Aux.Insert(temperature_h1Aux.Length - 1, ".");
+
+
+                            //incia em 98 (no caso fica 101 - 98)
+                            String temperature_h2 = bytes[101].ToString("X") + bytes[100].ToString("X") + bytes[99].ToString("X") + bytes[98].ToString("X");
+                            int int_temperature_h2 = int.Parse(temperature_h2, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_h2Aux = int_temperature_h2.ToString();
+                            TEMPERATURE_H2 = temperature_h2Aux.Insert(temperature_h2Aux.Length - 1, ".");
+
+                            //incia em 102 (no caso fica 105 - 102)
+                            String temperature_h3 = bytes[105].ToString("X") + bytes[104].ToString("X") + bytes[103].ToString("X") + bytes[102].ToString("X");
+                            int int_temperature_h3 = int.Parse(temperature_h3, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_h3Aux = int_temperature_h3.ToString();
+                            TEMPERATURE_H3 = temperature_h3Aux.Insert(temperature_h3Aux.Length - 1, ".");
+
+                            //incia em 106 (no caso fica 109 - 106)
+                            String temperature_h4 = bytes[109].ToString("X") + bytes[108].ToString("X") + bytes[107].ToString("X") + bytes[106].ToString("X");
+                            int int_temperature_h4 = int.Parse(temperature_h4, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_h4Aux = int_temperature_h4.ToString();
+                            TEMPERATURE_H4 = temperature_h4Aux.Insert(temperature_h4Aux.Length - 1, ".");
+
+                            //incia em 110 (no caso fica 113 - 110)
+                            String temperature_h5 = bytes[113].ToString("X") + bytes[112].ToString("X") + bytes[111].ToString("X") + bytes[110].ToString("X");
+                            int int_temperature_h5 = int.Parse(temperature_h5, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_h5Aux = int_temperature_h5.ToString();
+                            TEMPERATURE_H5 = temperature_h5Aux.Insert(temperature_h5Aux.Length - 1, ".");
+
+                            //incia em 114 (no caso fica 117 - 114)
+                            String temperature_h6 = bytes[117].ToString("X") + bytes[116].ToString("X") + bytes[115].ToString("X") + bytes[114].ToString("X");
+                            int int_temperature_h6 = int.Parse(temperature_h6, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_h6Aux = int_temperature_h6.ToString();
+                            TEMPERATURE_OIL = temperature_h6Aux.Insert(temperature_h6Aux.Length - 1, ".");
+
+                            //incia em 118 (no caso fica 121 - 118)
+                            String temperature_hop = bytes[121].ToString("X") + bytes[120].ToString("X") + bytes[119].ToString("X") + bytes[118].ToString("X");
+                            int int_temperature_hop = int.Parse(temperature_hop, System.Globalization.NumberStyles.HexNumber);
+                            String temperature_hopAux = int_temperature_hop.ToString();
+                            TEMPERATURE_HOP = temperature_hopAux.Insert(temperature_hopAux.Length - 1, ".");
+
+                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametrosAtuais/insert");
+                            httpWebRequest.ContentType = "application/json";
+                            httpWebRequest.Method = "POST";
+
+
+                            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                            {
+                                string json = "{\"mac\":\"" + ipServer + "\"" + "," +
+                      "\"prodShot\":\"" + PRODUCTION_SHOT + "\"" + "," +
+                      "\"dwellPressure\":\"" + DWELL_PRESSURE + "\"" + "," +
+                      "\"ok_prodShot\":\"" + OK_PRODUCTION_SHOT + "\"" + "," +
+                      "\"printShot\":\"" + PRING_SHOT + "\"" + "," +
+                      "\"fillingTime\":\"" + FILLING_TIME + "\"" + "," +
+                      "\"chargingTime\":\"" + CHARGIN_TIME + "\"" + "," +
+                      "\"takeoutTime\":\"" + TAKE_OUT_TIME + "\"" + "," +
+                      "\"cycleTime\":\"" + CYCLE_TIME + "\"" + "," +
+                      "\"dwellChnagePosition\":\"" + DWELL_CHANGE_POSITION + "\"" + "," +
+                      "\"minumumCushionPosition\":\"" + MINIMUN_CUSHION_POSITION + "\"" + "," +
+                      "\"cushionPosition\":\"" + CUSHION_POSITION_ + "\"" + "," +
+                      "\"injetStartPosition\":\"" + INJECTION_START_POSITION + "\"" + "," +
+                      "\"maxInjectPressure\":\"" + MAXIMUM_INJECTION_PRESSURE + "\"" + "," +
+                      "\"temperature_hen\":\"" + TEMPERATURE_HEN + "\"" + "," +
+                      "\"temperature_hn\":\"" + TEMPERATURE_HN + "\"" + "," +
+                      "\"temperature_h1\":\"" + TEMPERATURE_H1 + "\"" + "," +
+                      "\"temperature_h2\":\"" + TEMPERATURE_H2 + "\"" + "," +
+                      "\"temperature_h3\":\"" + TEMPERATURE_H3 + "\"" + "," +
+                      "\"temperature_h4\":\"" + TEMPERATURE_H4 + "\"" + "," +
+                      "\"temperature_h5\":\"" + TEMPERATURE_H5 + "\"" + "," +
+                      "\"temperature_oil\":\"" + TEMPERATURE_OIL + "\"" + "," +
+                      "\"temperature_hop\":\"" + TEMPERATURE_HOP + "\"" + "," +
+                      "\"screwRotationSpeed\":\"" + SCREW_ROTATION_SPEED + "\"" + "," +
+                      "\"cycleTime\":\"" + CYCLE_TIME + "\""
+                      + "}";
+
+                                streamWriter.Write(json);
+                            }
+
+                            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                        }
+                    }
                     
-                        
-
-                        //VI7 (254 e 255)
-                        viHex = bytes[255].ToString("X") + bytes[254].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI7 = viAux.Substring(0, viAux.Length - 1) + ".0";
-
-                        //VI8 (258 e 259)
-                        viHex = bytes[259].ToString("X") + bytes[258].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI8 = viAux.Substring(0, viAux.Length - 1) + ".0";
-
-                        //VI9 (262 e 263)
-                        viHex = bytes[263].ToString("X") + bytes[262].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI9 = viAux.Substring(0, viAux.Length - 1) + ".0";
-
-                        //VI10 (266 e 267)
-                        viHex = bytes[267].ToString("X") + bytes[266].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VI10 = viAux.Substring(0, viAux.Length - 1) + ".0";
-
-                        //VH1 (270 e 271)
-                        viHex = bytes[271].ToString("X") + bytes[270].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VH1 = viAux.Substring(0, viAux.Length - 1) + ".0";
-
-                        //VH2 (274 e 275)
-                        viHex = bytes[275].ToString("X") + bytes[274].ToString("X");
-                        vi = int.Parse(viHex, System.Globalization.NumberStyles.HexNumber);
-                        viAux = vi.ToString();
-                        if (vi > 0)
-                            VH2 = viAux.Substring(0, viAux.Length - 1) + ".0";
-
-                        //PI1 (278, 279, 280)
-
-                        String piHex = bytes[280].ToString("X") + bytes[279].ToString("X") + bytes[278].ToString("X");
-                        int pi = int.Parse(piHex, System.Globalization.NumberStyles.HexNumber);
-                        String piAux = pi.ToString();
-                        if (pi > 0)
-                        {
-                            if (pi > 10000)
-                            {
-                                PI1 = piAux.Substring(0, piAux.Length - 2) + ".00";
-                            }
-                            else if (pi > 1000)
-                            {
-                                PI1 = piAux.Substring(0, piAux.Length - 2) + ".00";
-                            }
-                            else
-                            {
-                                PI1 = piAux.Substring(0, piAux.Length - 1) + ".0";
-                            }
-                        }
-                            
-
-                        //LS4 (318 e 319)
-                        String lsHex = bytes[321].ToString("X") + bytes[320].ToString("X") + bytes[319].ToString("X") + bytes[318].ToString("X");
-                        int ls = int.Parse(lsHex, System.Globalization.NumberStyles.HexNumber);
-                        String lsAux = ls.ToString();
-                        if (ls > 0)
-                            LS4 = lsAux.Substring(0, lsAux.Length - 3) + ".0";
-
-                        //LS4A (322 e 323)
-                        lsHex = bytes[325].ToString("X") + bytes[324].ToString("X") + bytes[323].ToString("X") + bytes[322].ToString("X");
-                        ls = int.Parse(lsHex, System.Globalization.NumberStyles.HexNumber);
-                        lsAux = ls.ToString();
-                        if (ls > 0)
-                        {
-                            if(ls> 10000)
-                            {
-                                LS4A = lsAux.Substring(0, lsAux.Length - 3) + ".00";
-                            }else if (ls > 1000)
-                            {
-                                LS4A = lsAux.Substring(0, lsAux.Length - 2) + ".00";
-                            }
-                            else
-                            {
-                                LS4A = lsAux.Substring(0, lsAux.Length - 1) + ".0";
-                            }
-                        }
-                            
-
-
-                        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametros/insert");
-                        httpWebRequest.ContentType = "application/json";
-                        httpWebRequest.Method = "POST";
-                      
-
-                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                        {
-                            string json = "{\"mac\":\"" + ipServer + "\"" + "," +
-                  "\"VI1\":\"" + VI1 + "\"" + "," +
-                  "\"VI2\":\"" + VI2 + "\"" + "," +
-                  "\"VI3\":\"" + VI3 + "\"" + "," +
-                  "\"VI4\":\"" + VI4 + "\"" + "," +
-                  "\"VI5\":\"" + VI5 + "\"" + "," +
-                  "\"VI6\":\"" + VI6 + "\"" + "," +
-                  "\"VI7\":\"" + VI7 + "\"" + "," +
-                  "\"VI8\":\"" + VI8 + "\"" + "," +
-                  "\"VI9\":\"" + VI9 + "\"" + "," +
-                  "\"VI10\":\"" + VI10 + "\"" + "," +
-                  "\"VH1\":\"" + VH1 + "\"" + "," +
-                  "\"VH2\":\"" + VH2 + "\"" + "," +
-                  "\"PI1\":\"" + PI1 + "\"" + "," +
-                  "\"LS4\":\"" + LS4 + "\"" + "," +
-                  "\"LS4A\":\"" + LS4A + "\""
-                  + "}";
-
-                            streamWriter.Write(json);
-                        }
-
-                        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-
-
-
-
-
-
-                        //Print
-                        Console.WriteLine("Título:" + titulo + "\n" + "Data:" + date + "\n" + "VI_1:" + VI1);
-                        Console.WriteLine("VI_2:" + VI2);
-                        Console.WriteLine("LS4:" + LS4);
-                        Console.WriteLine("LS4A:" + LS4A);
-                        Console.WriteLine("Fim do teste!");
-
-                    }
-
-
-
-                    if (bytes[0] == 0x30 && bytes[1] == 0x31 && bytes[2] == 0x30 && bytes[3] == 0x30 && bytes[4] == 0x31 && bytes[5] == 0x31)
-                    {
-                        Console.WriteLine("Entrou no pacote de qualidade");
-
-
-               
-                        //incia em 14 (no caso fica 17 - 14)
-                        String prodShot = bytes[17].ToString("X") + bytes[16].ToString("X") + bytes[15].ToString("X") + bytes[14].ToString("X");
-                        int int_prodShot = int.Parse(prodShot, System.Globalization.NumberStyles.HexNumber);
-                        String prodShotAux = int_prodShot.ToString();
-                        PRODUCTION_SHOT = prodShotAux;
-
-                        //incia em 18 (no caso fica 21 - 18)
-                        String ok_prodShot = bytes[21].ToString("X") + bytes[20].ToString("X") + bytes[19].ToString("X") + bytes[18].ToString("X");
-                        int int_ok_prodShot = int.Parse(ok_prodShot, System.Globalization.NumberStyles.HexNumber);
-                        String okprodShotAux = int_ok_prodShot.ToString();
-                        OK_PRODUCTION_SHOT = okprodShotAux;
-
-                        //incia em 26 (no caso fica 29 - 26)
-                        String printShot = bytes[29].ToString("X") + bytes[28].ToString("X") + bytes[27].ToString("X") + bytes[26].ToString("X");
-                        int int_printShot = int.Parse(printShot, System.Globalization.NumberStyles.HexNumber);
-                        String printShotAux = int_printShot.ToString();
-                        PRING_SHOT = printShotAux;
-
-                        //incia em 30 (no caso fica 33 - 30)
-                        String fillingTime = bytes[33].ToString("X") + bytes[32].ToString("X") + bytes[31].ToString("X") + bytes[30].ToString("X");
-                        int int_fillingTime = int.Parse(fillingTime, System.Globalization.NumberStyles.HexNumber);
-                        String fillingTimeAux = int_fillingTime.ToString();
-                        FILLING_TIME = fillingTimeAux;
-
-                        //incia em 34 (no caso fica 37 - 34)
-                        String chargingTime = bytes[37].ToString("X") + bytes[36].ToString("X") + bytes[35].ToString("X") + bytes[34].ToString("X");
-                        int int_chargingTime = int.Parse(chargingTime, System.Globalization.NumberStyles.HexNumber);
-                        String chargingTimeAux = int_chargingTime.ToString();
-                        CHARGIN_TIME = chargingTimeAux;
-
-                        //incia em 38 (no caso fica 41 - 38)
-                        String takeoutTime = bytes[41].ToString("X") + bytes[40].ToString("X") + bytes[39].ToString("X") + bytes[38].ToString("X");
-                        int int_takeoutTime = int.Parse(takeoutTime, System.Globalization.NumberStyles.HexNumber);
-                        String takeoutTimeAux = int_takeoutTime.ToString();
-                        TAKE_OUT_TIME = takeoutTimeAux;
-
-                        //incia em 42 (no caso fica 45 - 42)
-                        String cycleTime = bytes[45].ToString("X") + bytes[44].ToString("X") + bytes[43].ToString("X") + bytes[42].ToString("X");
-                        int int_cycleTime = int.Parse(cycleTime, System.Globalization.NumberStyles.HexNumber);
-                        String cycleTimeAux = int_cycleTime.ToString();
-                        CYCLE_TIME = cycleTimeAux.Insert(cycleTimeAux.Length - 2, ".");
-
-                        //incia em 46 (no caso fica 49 - 46)
-                        String minumumCushionPosition = bytes[49].ToString("X") + bytes[48].ToString("X") + bytes[47].ToString("X") + bytes[46].ToString("X");
-                        int int_minumumCushionPosition = int.Parse(minumumCushionPosition, System.Globalization.NumberStyles.HexNumber);
-                        String minumumCushionPositionAux = int_minumumCushionPosition.ToString();
-                        MINIMUN_CUSHION_POSITION = minumumCushionPositionAux.Insert(minumumCushionPositionAux.Length - 3, ".");
-
-                        //incia em 50 (no caso fica 53 - 50)
-                        String cushionPosition = bytes[53].ToString("X") + bytes[52].ToString("X") + bytes[51].ToString("X") + bytes[50].ToString("X");
-                        int int_cushionPosition = int.Parse(cushionPosition, System.Globalization.NumberStyles.HexNumber);
-                        String cushionPositionAux = int_cushionPosition.ToString();
-                        CUSHION_POSITION_ = cushionPositionAux.Insert(cushionPositionAux.Length - 3, ".");
-
-                        //incia em 54 (no caso fica 57 - 54)
-                        String dwellChnagePosition = bytes[57].ToString("X") + bytes[56].ToString("X") + bytes[55].ToString("X") + bytes[54].ToString("X");
-                        int int_dwellChnagePosition = int.Parse(dwellChnagePosition, System.Globalization.NumberStyles.HexNumber);
-                        String dwellChnagePositionAux = int_dwellChnagePosition.ToString();
-                        DWELL_CHANGE_POSITION = dwellChnagePositionAux.Insert(dwellChnagePositionAux.Length - 3, ".");
-
-                        //incia em 58 (no caso fica 61 - 58)
-                        String injetStartPosition = bytes[57].ToString("X") + bytes[56].ToString("X") + bytes[55].ToString("X") + bytes[54].ToString("X");
-                        int int_injetStartPosition = int.Parse(injetStartPosition, System.Globalization.NumberStyles.HexNumber);
-                        String injetStartPositionAux = int_injetStartPosition.ToString();
-                        INJECTION_START_POSITION = injetStartPositionAux.Insert(injetStartPositionAux.Length - 3, ".");
-
-                        //incia em 62 (no caso fica 65 - 62)
-                        String maxInjectPressure = bytes[65].ToString("X") + bytes[64].ToString("X") + bytes[63].ToString("X") + bytes[62].ToString("X");
-                        int int_maxInjectPressure = int.Parse(maxInjectPressure, System.Globalization.NumberStyles.HexNumber);
-                        String maxInjectPressureAux = int_maxInjectPressure.ToString();
-                        MAXIMUM_INJECTION_PRESSURE = maxInjectPressureAux.Insert(maxInjectPressureAux.Length - 3, ".");
-
-                        //incia em 66 (no caso fica 69 - 66)
-                        String dwellPressure = bytes[69].ToString("X") + bytes[68].ToString("X") + bytes[67].ToString("X") + bytes[66].ToString("X");
-                        int int_dwellPressure = int.Parse(dwellPressure, System.Globalization.NumberStyles.HexNumber);
-                        String dwellPressureAux = int_dwellPressure.ToString();
-                        DWELL_PRESSURE = dwellPressureAux.Insert(dwellPressureAux.Length - 2, ".");
-
-                        //incia em 70 (no caso fica 73 - 70)
-                        String screwRotationSpeed = bytes[73].ToString("X") + bytes[72].ToString("X") + bytes[71].ToString("X") + bytes[70].ToString("X");
-                        int int_screwRotationSpeed = int.Parse(screwRotationSpeed, System.Globalization.NumberStyles.HexNumber);
-                        String screwRotationSpeedAux = int_screwRotationSpeed.ToString();
-                        SCREW_ROTATION_SPEED = screwRotationSpeedAux;
-
-
-                        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametrosAtuais/insert");
-                        httpWebRequest.ContentType = "application/json";
-                        httpWebRequest.Method = "POST";
-
-
-                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                        {
-                            string json = "{\"mac\":\"" + ipServer + "\"" + "," +
-                  "\"prodShot\":\"" + PRODUCTION_SHOT + "\"" + "," +
-                  "\"dwellPressure\":\"" + DWELL_PRESSURE + "\"" + "," +
-                  "\"ok_prodShot\":\"" + OK_PRODUCTION_SHOT + "\"" + "," +
-                  "\"printShot\":\"" + PRING_SHOT + "\"" + "," +
-                  "\"fillingTime\":\"" + FILLING_TIME + "\"" + "," +
-                  "\"chargingTime\":\"" + CHARGIN_TIME + "\"" + "," +
-                  "\"takeoutTime\":\"" + TAKE_OUT_TIME + "\"" + "," +
-                  "\"cycleTime\":\"" + CYCLE_TIME + "\"" + "," +
-                  "\"dwellChnagePosition\":\"" + DWELL_CHANGE_POSITION + "\"" + "," +
-                  "\"minumumCushionPosition\":\"" + MINIMUN_CUSHION_POSITION + "\"" + "," +
-                  "\"cushionPosition\":\"" + CUSHION_POSITION_ + "\"" + "," +
-                  "\"injetStartPosition\":\"" + INJECTION_START_POSITION + "\"" + "," +
-                  "\"maxInjectPressure\":\"" + MAXIMUM_INJECTION_PRESSURE + "\"" + "," +
-                  "\"screwRotationSpeed\":\"" + SCREW_ROTATION_SPEED + "\"" + "," +
-
-                  "\"cycleTime\":\"" + CYCLE_TIME + "\""                  
-                  + "}";
-
-                            streamWriter.Write(json);
-                        }
-
-                        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-
-                    }
 
 
                     }
@@ -756,6 +849,21 @@ namespace ColetaInjetoraToshiba.tela
             //posto_cadastrado.Add(rn_atualteste);
 
                 MessageBox.Show("Inicinaod teste");
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
    
