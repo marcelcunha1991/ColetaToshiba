@@ -133,6 +133,9 @@ namespace ColetaInjetoraToshiba.tela
             vetorRequisicao[14] = 0x0;
             vetorRequisicao[15] = 0x0;
 
+            int data = Int32.Parse(textBoxMac.Text);
+            byte number = Convert.ToByte(data);
+
             vetorRequisicao[16] = 0x0;
             vetorRequisicao[17] = 0x97;
 
