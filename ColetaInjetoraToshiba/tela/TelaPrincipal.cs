@@ -93,10 +93,10 @@ namespace ColetaInjetoraToshiba.tela
         private String TEMPERATURE_H5 = "0.0";
         private String TEMPERATURE_OIL = "0.0";
         private String TEMPERATURE_HOP = "0.0";
-       
 
 
 
+        private String ipServidorMap;
 
 
 
@@ -108,16 +108,16 @@ namespace ColetaInjetoraToshiba.tela
             
         }
 
-        public void iniciaColeta(String ip) {           
+        public void iniciaColeta(String maqIp, String serverIp, String prog) {           
         
-            string mac = "5C:F3:FC:FD:E1:F5";            
-
-            string ipToshiba = ip;
+            string mac = "5C:F3:FC:FD:E1:F5";
+           // listMaquinas.Text = "Thread Iniciada";
+            string ipToshiba = maqIp;
 
             int porta = 120;
 
-            IPAddress local = IPAddress.Parse(ip);
-
+            IPAddress local = IPAddress.Parse(serverIp);
+           // listMaquinas.Text = "IP: " + ip;
             ////FLAG - READ
             vetorRequisicao[0] = 0x30;
             vetorRequisicao[1] = 0x32;
@@ -141,8 +141,10 @@ namespace ColetaInjetoraToshiba.tela
             vetorRequisicao[12] = 0x30;
             vetorRequisicao[13] = 0x34;
 
-            int data = Int32.Parse(txtCodigo.Text);
+            int data = Int32.Parse(prog);
             byte number = Convert.ToByte(data);
+
+            //listMaquinas.Text = number.ToString();
 
             ////DATA
             vetorRequisicao[14] = 0x0;
@@ -150,6 +152,8 @@ namespace ColetaInjetoraToshiba.tela
 
             vetorRequisicao[16] = 0x0;
             vetorRequisicao[17] = number;
+
+            listMaquinas.Items.Add(number);
             //vetorRequisicao[17] = 0xa4;
 
             serverTcp = new TcpListener(local, porta);
@@ -164,9 +168,13 @@ namespace ColetaInjetoraToshiba.tela
                     {
                         //tc.Connect(ipToshiba, 139);
                         //isConectado = false;
+                       // listMaquinas.Text = "Esperando por conexão";
                         Console.WriteLine("Esperando por conexão");
+                        listMaquinas.Items.Add("Esperando por conexão");
                         TcpClient client = serverTcp.AcceptTcpClient();
                         Console.WriteLine("Conectado");
+                        listMaquinas.Items.Add("Conectado");
+                        // listMaquinas.Text = "Conectado";
                         Thread t = new Thread(new ParameterizedThreadStart(HandleClient));
                         t.Start(client);
                     }
@@ -179,6 +187,7 @@ namespace ColetaInjetoraToshiba.tela
                 }
 
                 Console.WriteLine("Abri a conexão. IP: " + ipToshiba);
+               // listMaquinas.Text = "Abri a conexão. IP: " + ipToshiba;
                 Console.WriteLine("Request:");
                 Console.WriteLine(vetorRequisicao[0]);
                 Console.WriteLine(vetorRequisicao[1]);
@@ -226,7 +235,7 @@ namespace ColetaInjetoraToshiba.tela
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //listMaquinas.Text = "Iniciando Thread";
             Thread t = new Thread(NovaThread);
             t.Start();
 
@@ -236,7 +245,8 @@ namespace ColetaInjetoraToshiba.tela
 
         public void NovaThread()
         {
-            iniciaColeta(txtIpServidor.Text);
+            ipServidorMap = txtIpServidor.Text;
+            iniciaColeta(textBoxMac.Text, txtIpServidor.Text, txtCodigo.Text);
         }
 
         public void HandleClient(Object obj) {
@@ -295,6 +305,7 @@ namespace ColetaInjetoraToshiba.tela
                         if (bytes[0] == 0x30 && bytes[1] == 0x31 && bytes[2] == 0x30 && bytes[3] == 0x30 && bytes[4] == 0x30 && bytes[5] == 0x31)
                         {
                             Console.WriteLine("Entrou no pacote Data" + ipServer);
+                            listMaquinas.Items.Add("Entrou no pacote Data" + ipServer);
                             Console.WriteLine(data[50]);
                             //Console.WriteLine(data);
                             string diahex = bytes[50].ToString("X");
@@ -443,11 +454,11 @@ namespace ColetaInjetoraToshiba.tela
 
 
 
-                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametros/insert");
+                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + ipServidorMap + ":8081/parametros/insert");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
 
-
+                            listMaquinas.Items.Add("enviando pacote de dados para o servidor");
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = "{\"mac\":\"" + ipServer + "\"" + "," +
@@ -493,7 +504,7 @@ namespace ColetaInjetoraToshiba.tela
                         {
                             Console.WriteLine("Entrou no pacote de qualidade " + ipServer);
 
-
+                            listMaquinas.Items.Add("Entrou no pacote de qualidade" + ipServer);
 
                             //incia em 14 (no caso fica 17 - 14)
                             String prodShot = bytes[17].ToString("X") + bytes[16].ToString("X") + bytes[15].ToString("X") + bytes[14].ToString("X");
@@ -635,14 +646,15 @@ namespace ColetaInjetoraToshiba.tela
                             String temperature_hopAux = int_temperature_hop.ToString();
                             TEMPERATURE_HOP = temperature_hopAux.Insert(temperature_hopAux.Length - 1, ".");
 
-                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://123.123.123.190:3000/parametrosAtuais/insert");
+                            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://" + ipServidorMap + ":8081/parametrosAtuais/insert");
                             httpWebRequest.ContentType = "application/json";
                             httpWebRequest.Method = "POST";
-
+                            listMaquinas.Items.Add("Enviando dados no pacote de qualidade");
 
                             using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                             {
                                 string json = "{\"mac\":\"" + ipServer + "\"" + "," +
+                      "\"tipo\":\"" + "2" + "\"" + "," +
                       "\"prodShot\":\"" + PRODUCTION_SHOT + "\"" + "," +
                       "\"dwellPressure\":\"" + DWELL_PRESSURE + "\"" + "," +
                       "\"ok_prodShot\":\"" + OK_PRODUCTION_SHOT + "\"" + "," +
@@ -749,7 +761,7 @@ namespace ColetaInjetoraToshiba.tela
                 if (cdUp.Contains("_CEP")&&server!=null)
                 {
                     
-                    listMaquinas.Items.Add("Codigo: " + cdPtAtual + " Host: " + host);
+                    //listMaquinas.Items.Add("Codigo: " + cdPtAtual + " Host: " + host);
                     ColetaInjetoraHaitianListener rn_atual = new ColetaInjetoraHaitianListener();
                     rn_atual.inicializaColeta(cdPtAtual, host, icdto_cadastrado, icupdto_atual, server);
                     posto_cadastrado.Add(rn_atual);
@@ -862,6 +874,11 @@ namespace ColetaInjetoraToshiba.tela
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIpServidor_TextChanged(object sender, EventArgs e)
         {
 
         }

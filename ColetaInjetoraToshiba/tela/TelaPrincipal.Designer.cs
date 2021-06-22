@@ -157,6 +157,7 @@ namespace ColetaInjetoraToshiba.tela
             this.txtIpServidor.Name = "txtIpServidor";
             this.txtIpServidor.Size = new System.Drawing.Size(132, 22);
             this.txtIpServidor.TabIndex = 9;
+            this.txtIpServidor.TextChanged += new System.EventHandler(this.txtIpServidor_TextChanged);
             // 
             // TelaPrincipal
             // 
